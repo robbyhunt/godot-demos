@@ -1,0 +1,63 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Reference",
+"class": "Action",
+"language": "GDScript",
+"path": "res://Action.gd"
+}, {
+"base": "Resource",
+"class": "ActionData",
+"language": "GDScript",
+"path": "res://ActionData.gd"
+}, {
+"base": "Node",
+"class": "ActiveTurnQueue",
+"language": "GDScript",
+"path": "res://ActiveTurnQueue.gd"
+}, {
+"base": "Spatial",
+"class": "Battler",
+"language": "GDScript",
+"path": "res://Battler.gd"
+}, {
+"base": "Resource",
+"class": "BattlerStats",
+"language": "GDScript",
+"path": "res://BattlerStats.gd"
+}, {
+"base": "Reference",
+"class": "Types",
+"language": "GDScript",
+"path": "res://Types.gd"
+} ]
+_global_script_class_icons={
+"Action": "",
+"ActionData": "",
+"ActiveTurnQueue": "",
+"Battler": "",
+"BattlerStats": "",
+"Types": ""
+}
+
+[application]
+
+config/name="Pokey-Men"
+run/main_scene="res://Scene.tscn"
+config/icon="res://icon.png"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
