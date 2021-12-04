@@ -47,19 +47,19 @@ func _set_color(value: Color) -> void:
 
 
 func _animate() -> void:
-	var angle := rand_range(-PI / 3.0, PI / 3.0)
-	var offset := Vector2.UP.rotated(angle) * 60.0
+	var side_movement = randi() % 3 - 1.5
+	print(side_movement)
 	_tween.interpolate_property(
-		_label,
-		"rect_position",
-		_label.rect_position,
-		_label.rect_position + offset,
-		0.4,
+		self,
+		"translation",
+		translation,
+		Vector3(translation.x, translation.y + 0.5, translation.z + side_movement),
+		1,
 		Tween.TRANS_QUAD,
 		Tween.EASE_OUT
 	)
 	_tween.interpolate_property(
-		_sprite, "modulate", _sprite.modulate, COLOR_TRANSPARENT, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN, 0.3
+		_sprite, "modulate", _sprite.modulate, COLOR_TRANSPARENT, 0.25, Tween.TRANS_LINEAR, Tween.EASE_IN, 0.3
 	)
 	_tween.start()
 	yield(_tween, "tween_all_completed")
