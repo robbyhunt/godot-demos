@@ -15,6 +15,9 @@ func setup(max_energy: int, energy: int) -> void:
 	for i in max_value:
 		var energy_point: TextureRect = UIEnergyPoint.instance()
 		add_child(energy_point)
+	
+	for i in energy:
+		get_child(i).appear()
 
 
 func set_value(amount: int) -> void:
@@ -31,9 +34,10 @@ func set_value(amount: int) -> void:
 func set_selected_count(amount: int) -> void:
 	var old_value := selected_count
 	selected_count = int(clamp(amount, 0.0, max_value))
+	var pips = get_children()
 	if selected_count > old_value:
 		for i in range(old_value, selected_count):
-			get_child(i).select()
+			pips[i].select()
 	else:
 		for i in range(old_value, selected_count, -1):
-			get_child(i - 1).deselect()
+			pips[i - 1].deselect()
