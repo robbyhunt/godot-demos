@@ -39,7 +39,7 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="FrontAnchor" parent="BattlerAnim" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.35078, -5.05954e-07 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.65078, 2.2 )
 
 [node name="TopAnchor" parent="BattlerAnim" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.35433, -5.06491e-07 )

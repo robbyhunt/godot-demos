@@ -39,10 +39,10 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="FrontAnchor" parent="BattlerAnim" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.4, 2.5 )
 
 [node name="TopAnchor" parent="BattlerAnim" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, -3.01992e-08 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.2, -3.01992e-08 )
 
 [node name="StatusEffectContainer" type="Node" parent="."]
 script = ExtResource( 9 )

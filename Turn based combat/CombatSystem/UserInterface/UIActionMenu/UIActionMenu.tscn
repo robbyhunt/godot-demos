@@ -3,10 +3,14 @@
 [ext_resource path="res://CombatSystem/UserInterface/UIActionMenu/UIActionMenu.gd" type="Script" id=1]
 
 [node name="UIActionMenu" type="Control"]
-margin_left = 968.0
-margin_top = 624.0
-margin_right = 1311.0
-margin_bottom = 942.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -428.0
+margin_top = -384.0
+margin_right = -85.0
+margin_bottom = -66.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

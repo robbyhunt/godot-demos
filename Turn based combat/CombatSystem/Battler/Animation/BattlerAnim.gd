@@ -15,7 +15,6 @@ export (Direction) var direction := Direction.RIGHT setget set_direction
 
 var _translation_start := Vector3.ZERO
 
-onready var spotlight: SpotLight = $Pivot/SpotLight
 onready var anim_player: AnimationPlayer = $Pivot/AnimationPlayer
 onready var anim_player_damage: AnimationPlayer = $Pivot/AnimationPlayerDamage
 onready var anchor_front: Position3D = $FrontAnchor
@@ -54,29 +53,11 @@ func queue_animation(anim_name: String) -> void:
 
 
 func move_forward() -> void:
-	tween.interpolate_property(
-		spotlight,
-		"light_energy",
-		0,
-		1,
-		0.3,
-		Tween.TRANS_QUART,
-		Tween.EASE_IN_OUT
-	)
-	tween.start()
+	print(get_parent().name + " has stepped forward.")
 
 
 func move_back() -> void:
-	tween.interpolate_property(
-		spotlight,
-		"light_energy",
-		1,
-		0,
-		0.3,
-		Tween.TRANS_QUART,
-		Tween.EASE_IN_OUT
-	)
-	tween.start()
+	print(get_parent().name + " has stepped back.")
 
 
 
