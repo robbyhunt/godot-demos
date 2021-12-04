@@ -8,7 +8,7 @@ export var UIActionMenuScene: PackedScene
 export var SelectArrow: PackedScene
 
 # Allows pausing the Active Time Battle during combat intro, a cut-scene, or combat end.
-var is_active := true setget set_is_active
+var is_active := false setget set_is_active
 # Multiplier for the global pace of battle, to slow down time while the player is taking decisions.
 # This is meant for accessibility and to control difficulty.
 var time_scale := 1.0 setget set_time_scale
@@ -23,11 +23,15 @@ var _opponents := []
 
 var _is_player_playing := false
 
-onready var battlers := get_children()
+var battlers = []
 
 
 func _ready() -> void:
 	connect("player_turn_finished", self, "_on_player_turn_finished")
+
+
+func setup(_battlers) -> void:
+	battlers = _battlers
 	for battler in battlers:
 		battler.setup(battlers)
 		battler.connect("ready_to_act", self, "_on_Battler_ready_to_act", [battler])
@@ -35,6 +39,7 @@ func _ready() -> void:
 			_party_members.append(battler)
 		else:
 			_opponents.append(battler)
+	set_is_active(true)
 
 
 func set_is_active(value: bool) -> void:

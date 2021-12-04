@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://CombatSystem/Battler/Actions/Attacks/Claw.tres" type="Resource" id=1]
 [ext_resource path="res://CombatSystem/Battler/Actions/Attacks/BugClaw.tres" type="Resource" id=2]
 [ext_resource path="res://CombatSystem/Battler/Battler.gd" type="Script" id=3]
 [ext_resource path="res://CombatSystem/Battler/Stats/bug_cat_level_1.tres" type="Resource" id=4]
+[ext_resource path="res://CombatSystem/Battler/Agro/BattlerAgro.tscn" type="PackedScene" id=5]
 [ext_resource path="res://CombatSystem/Battler/AI/AggressiveBattlerAI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://CombatSystem/Battler/BattlerUIData.gd" type="Script" id=7]
 [ext_resource path="res://CombatSystem/Battler/Animation/BattlerAnim.tscn" type="PackedScene" id=8]
@@ -13,9 +14,17 @@
 script = ExtResource( 7 )
 display_name = "BugCat"
 
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( -1, -1, -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1 )
+
 [sub_resource type="CubeMesh" id=2]
 
-[node name="BugCat" type="Spatial"]
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 1, 1, 2 )
+
+[node name="BugCat" type="KinematicBody"]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
@@ -25,21 +34,33 @@ ai_scene = ExtResource( 6 )
 actions = [ ExtResource( 1 ), ExtResource( 2 ) ]
 ui_data = SubResource( 1 )
 
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( -1, 0, 0, 0, 1, -1.50996e-07, 0, 1.50996e-07, 1, 0, 1, 1.50996e-07 )
+shape = SubResource( 3 )
+
+[node name="BattlerAgro" parent="." instance=ExtResource( 5 )]
+
 [node name="BattlerAnim" parent="." instance=ExtResource( 8 )]
 
 [node name="Pivot" parent="BattlerAnim" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+visible = true
 
 [node name="MeshInstance" type="MeshInstance" parent="BattlerAnim/Pivot" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 mesh = SubResource( 2 )
 material/0 = null
 
+[node name="MeshInstance" type="MeshInstance" parent="BattlerAnim/Pivot/MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.258978, -1.53106 )
+mesh = SubResource( 4 )
+material/0 = null
+
 [node name="FrontAnchor" parent="BattlerAnim" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.4, 2.5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.06418, 0.903084, -1.1 )
 
 [node name="TopAnchor" parent="BattlerAnim" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.2, -3.01992e-08 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, -0.2 )
 
 [node name="StatusEffectContainer" type="Node" parent="."]
 script = ExtResource( 9 )

@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://CombatSystem/UserInterface/UILayer.gd" type="Script" id=1]
+[ext_resource path="res://CombatSystem/CombatDemo.gd" type="Script" id=2]
+[ext_resource path="res://CombatSystem/UserInterface/UIDamageLabel/UIDamageLabelBuilder.tscn" type="PackedScene" id=3]
+[ext_resource path="res://CombatSystem/UserInterface/UIActionMenu/UISelectBattlerArrow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://CombatSystem/UserInterface/UITurnBar/UITurnBar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://CombatSystem/UserInterface/UIBattlerHUD/UIBattlerHUDList.tscn" type="PackedScene" id=6]
+[ext_resource path="res://CombatSystem/UserInterface/UIActionMenu/UIActionMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://CombatSystem/ActiveTurnQueue.gd" type="Script" id=8]
+
+[node name="CombatDemo" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.679556, -0.186076, 0.709633, 0, 0.967299, 0.25364, -0.733623, -0.172363, 0.657334, 7.90062, 4.50731, 6.19524 )
+
+[node name="Player" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0 )
+
+[node name="Enemy" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0 )
+
+[node name="ActiveTurnQueue" type="Spatial" parent="."]
+script = ExtResource( 8 )
+UIActionMenuScene = ExtResource( 7 )
+SelectArrow = ExtResource( 4 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource( 1 )
+
+[node name="UITurnBar" parent="UI" instance=ExtResource( 5 )]
+margin_left = 0.697998
+margin_top = 1.61401
+margin_right = 0.697998
+margin_bottom = 1.61389
+
+[node name="UIBattlerHUDList" parent="UI" instance=ExtResource( 6 )]
+margin_top = 232.0
+margin_bottom = -164.0
+
+[node name="UIDamageLabelBuilder" parent="UI" instance=ExtResource( 3 )]
+
+[connection signal="combat_ended" from="." to="UI" method="_on_CombatDemo_combat_ended"]

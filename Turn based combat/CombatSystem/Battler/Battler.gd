@@ -1,6 +1,6 @@
 # Character or monster that's participating in combat.
 # Any battler can be given an AI and turn into a computer-controlled ally or a foe.
-extends Spatial
+extends KinematicBody
 class_name Battler
 
 # Emitted when the battler is ready to take a turn.
@@ -26,7 +26,7 @@ export var ui_data: Resource
 # Provided by the ActiveTurnQueue.
 var time_scale := 1.0 setget set_time_scale
 # If `true`, the battler's readiness updates every frame.
-var is_active: bool = true setget set_is_active
+var is_active: bool = false setget set_is_active
 # If `true`, the battler is selected, which makes it move forward.
 # This property is intended for player-controlled characters.
 var is_selected: bool = false setget set_is_selected
@@ -36,18 +36,21 @@ var is_selectable: bool = true setget set_is_selectable
 var _readiness := 0.0 setget _set_readiness
 var _ai_instance = null
 
+onready var battler_agro: BattlerAgro = $BattlerAgro
 onready var battler_anim: BattlerAnim = $BattlerAnim
 onready var _status_effect_container: StatusEffectContainer = $StatusEffectContainer
 
 
 func _ready() -> void:
 	assert(stats is BattlerStats)
+	set_process(is_active)
 	stats = stats.duplicate()
 	stats.reinitialize()
 	stats.connect("health_depleted", self, "_on_BattlerStats_health_depleted")
 	
 	if is_party_member:
 		battler_anim.set_direction(battler_anim.Direction.LEFT)
+		battler_agro.enabled = false
 
 
 func _process(delta: float) -> void:
@@ -60,6 +63,24 @@ func setup(battlers: Array) -> void:
 		_ai_instance = ai_scene.instance()
 		_ai_instance.setup(self, battlers)
 		add_child(_ai_instance)
+
+
+# Called when combat is started to move battler into position and have it look at the enemy.
+# Also disables controller if battler is player controlled.
+func battle_posit_setup(move_posit, look_posit) -> void:
+	if is_player_controlled():
+		get_node("Controller").active = false
+	global_transform.origin = move_posit
+	look_at(look_posit, Vector3.UP)
+
+
+# Called on player battler when combat ends in victory
+func end_combat():
+	var controller = get_node("Controller")
+	controller.get_node("InnerGimbal/Camera").set_current(true)
+	controller.Direction = Vector3(0,0,0)
+	controller.active = true
+	
 
 
 # Makes the battler apply an [Action] to the `targets` and resets the battler's readiness.

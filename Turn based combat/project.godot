@@ -39,7 +39,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://CombatSystem/Battler/Actions/Attacks/AttackActionData.gd"
 }, {
-"base": "Spatial",
+"base": "KinematicBody",
 "class": "Battler",
 "language": "GDScript",
 "path": "res://CombatSystem/Battler/Battler.gd"
@@ -48,6 +48,11 @@ _global_script_classes=[ {
 "class": "BattlerAI",
 "language": "GDScript",
 "path": "res://CombatSystem/Battler/AI/BattlerAI.gd"
+}, {
+"base": "Area",
+"class": "BattlerAgro",
+"language": "GDScript",
+"path": "res://CombatSystem/Battler/Agro/BattlerAgro.gd"
 }, {
 "base": "Spatial",
 "class": "BattlerAnim",
@@ -63,6 +68,11 @@ _global_script_classes=[ {
 "class": "BattlerUIData",
 "language": "GDScript",
 "path": "res://CombatSystem/Battler/BattlerUIData.gd"
+}, {
+"base": "Spatial",
+"class": "CombatScene",
+"language": "GDScript",
+"path": "res://CombatSystem/CombatDemo.gd"
 }, {
 "base": "Reference",
 "class": "Formulas",
@@ -153,9 +163,11 @@ _global_script_class_icons={
 "AttackActionData": "",
 "Battler": "",
 "BattlerAI": "",
+"BattlerAgro": "",
 "BattlerAnim": "",
 "BattlerStats": "",
 "BattlerUIData": "",
+"CombatScene": "",
 "Formulas": "",
 "Hit": "",
 "StatusEffect": "",
@@ -177,7 +189,7 @@ _global_script_class_icons={
 [application]
 
 config/name="3D JRPG Combat Demo"
-run/main_scene="res://TestScene/CombatDemo.tscn"
+run/main_scene="res://TestScene/TestScene.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -200,6 +212,11 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PoolStringArray(  )
+
+[layer_names]
+
+3d_physics/layer_1="World"
+3d_physics/layer_2="Battlers"
 
 [rendering]
 

@@ -4,6 +4,9 @@
 extends Node
 
 
+# Emitted when player collides with an enemy battler while freewalking
+signal setup_combat(enemy_battler, player_battler)
+
 # Emitted when hovering a UIActionButton. The UIBattlerHUD uses this to display a preview of an
 # action's energy cost.
 signal combat_action_hovered(display_name, energy_cost)

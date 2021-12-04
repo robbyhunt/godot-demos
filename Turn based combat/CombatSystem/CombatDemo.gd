@@ -1,4 +1,5 @@
 extends Spatial
+class_name CombatScene
 
 signal combat_ended(message)
 
@@ -8,21 +9,25 @@ onready var active_turn_queue := $ActiveTurnQueue
 onready var ui_turn_bar := $UI/UITurnBar
 onready var ui_battler_hud_list := $UI/UIBattlerHUDList
 onready var ui_damage_label_builder := $UI/UIDamageLabelBuilder
+onready var camera = $Camera
 
 
 func _ready() -> void:
 	randomize()
 
-	var battlers: Array = active_turn_queue.battlers
+
+func setup(battlers) -> void:
 	var in_party := []
 	for battler in battlers:
 		battler.stats.connect("health_depleted", self, "_on_BattlerStats_health_depleted", [battler])
 		if battler.is_party_member:
 			in_party.append(battler)
 
-	ui_turn_bar.setup(active_turn_queue.battlers)
+	active_turn_queue.setup(battlers)
+	ui_turn_bar.setup(battlers)
 	ui_battler_hud_list.setup(in_party)
 	ui_damage_label_builder.setup(battlers, active_turn_queue)
+	camera.set_current(true)
 
 
 # Returns an array of `Battler` who are in the same team as `actor`, including `actor`.
