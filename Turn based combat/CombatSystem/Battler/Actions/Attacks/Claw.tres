@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://CombatSystem/Battler/Actions/Attacks/AttackActionData.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+label = "Claw"
+energy_cost = 0
+element = 4
+is_targeting_self = false
+is_targeting_all = false
+readiness_saved = 0.0
+damage_multiplier = 0.8
+hit_chance = 100.0

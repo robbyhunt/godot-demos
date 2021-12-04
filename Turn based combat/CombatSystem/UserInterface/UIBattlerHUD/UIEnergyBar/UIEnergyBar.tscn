@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://CombatSystem/UserInterface/UIBattlerHUD/UIEnergyBar/UIEnergyBar.gd" type="Script" id=2]
+
+[node name="UIEnergyBar" type="HBoxContainer"]
+margin_right = 36.0
+margin_bottom = 35.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}

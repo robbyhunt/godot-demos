@@ -1,0 +1,52 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://CombatSystem/Battler/Actions/Attacks/Punch.tres" type="Resource" id=1]
+[ext_resource path="res://CombatSystem/Battler/Actions/Attacks/SuperPunch.tres" type="Resource" id=2]
+[ext_resource path="res://CombatSystem/Battler/Stats/bear_stats.tres" type="Resource" id=3]
+[ext_resource path="res://CombatSystem/Battler/Battler.gd" type="Script" id=4]
+[ext_resource path="res://CombatSystem/Battler/Animation/bear.png" type="Texture" id=5]
+[ext_resource path="res://CombatSystem/Battler/Actions/Attacks/SlowingPunch.tres" type="Resource" id=6]
+[ext_resource path="res://CombatSystem/Battler/BattlerUIData.gd" type="Script" id=7]
+[ext_resource path="res://CombatSystem/Battler/Animation/BattlerAnim.tscn" type="PackedScene" id=8]
+[ext_resource path="res://CombatSystem/Battler/Actions/StatusEffects/StatusEffectContainer.gd" type="Script" id=9]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 7 )
+display_name = "Bear"
+texture = ExtResource( 5 )
+
+[sub_resource type="CapsuleMesh" id=2]
+
+[node name="Bear" type="Spatial"]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+stats = ExtResource( 3 )
+actions = [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 6 ) ]
+is_party_member = true
+ui_data = SubResource( 1 )
+
+[node name="BattlerAnim" parent="." instance=ExtResource( 8 )]
+transform = Transform( -1, 0, 0, 0, 1, -1.50996e-07, 0, 1.50996e-07, 1, 0, 0, 0 )
+
+[node name="Pivot" parent="BattlerAnim" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="BattlerAnim/Pivot" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.5, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="FrontAnchor" parent="BattlerAnim" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.35078, -5.05954e-07 )
+
+[node name="TopAnchor" parent="BattlerAnim" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.35433, -5.06491e-07 )
+
+[node name="StatusEffectContainer" type="Node" parent="."]
+script = ExtResource( 9 )
+
+[connection signal="animation_finished" from="BattlerAnim" to="." method="_on_BattlerAnim_animation_finished"]
+
+[editable path="BattlerAnim"]

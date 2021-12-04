@@ -12,51 +12,190 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Action",
 "language": "GDScript",
-"path": "res://Action.gd"
+"path": "res://CombatSystem/Battler/Actions/Action.gd"
 }, {
 "base": "Resource",
 "class": "ActionData",
 "language": "GDScript",
-"path": "res://ActionData.gd"
+"path": "res://CombatSystem/Battler/Actions/ActionData.gd"
 }, {
-"base": "Node",
+"base": "Spatial",
 "class": "ActiveTurnQueue",
 "language": "GDScript",
-"path": "res://ActiveTurnQueue.gd"
+"path": "res://CombatSystem/ActiveTurnQueue.gd"
+}, {
+"base": "BattlerAI",
+"class": "AggressiveBattlerAI",
+"language": "GDScript",
+"path": "res://CombatSystem/Battler/AI/AggressiveAI.gd"
+}, {
+"base": "Action",
+"class": "AttackAction",
+"language": "GDScript",
+"path": "res://CombatSystem/Battler/Actions/Attacks/AttackAction.gd"
+}, {
+"base": "ActionData",
+"class": "AttackActionData",
+"language": "GDScript",
+"path": "res://CombatSystem/Battler/Actions/Attacks/AttackActionData.gd"
 }, {
 "base": "Spatial",
 "class": "Battler",
 "language": "GDScript",
-"path": "res://Battler.gd"
+"path": "res://CombatSystem/Battler/Battler.gd"
+}, {
+"base": "Node",
+"class": "BattlerAI",
+"language": "GDScript",
+"path": "res://CombatSystem/Battler/AI/BattlerAI.gd"
+}, {
+"base": "Spatial",
+"class": "BattlerAnim",
+"language": "GDScript",
+"path": "res://CombatSystem/Battler/Animation/BattlerAnim.gd"
 }, {
 "base": "Resource",
 "class": "BattlerStats",
 "language": "GDScript",
-"path": "res://BattlerStats.gd"
+"path": "res://CombatSystem/Battler/Stats/BattlerStats.gd"
+}, {
+"base": "Resource",
+"class": "BattlerUIData",
+"language": "GDScript",
+"path": "res://CombatSystem/Battler/BattlerUIData.gd"
+}, {
+"base": "Reference",
+"class": "Formulas",
+"language": "GDScript",
+"path": "res://CombatSystem/Battler/Formulas.gd"
+}, {
+"base": "Reference",
+"class": "Hit",
+"language": "GDScript",
+"path": "res://CombatSystem/Battler/Actions/Hit.gd"
+}, {
+"base": "Node",
+"class": "StatusEffect",
+"language": "GDScript",
+"path": "res://CombatSystem/Battler/Actions/StatusEffects/StatusEffect.gd"
+}, {
+"base": "StatusEffect",
+"class": "StatusEffectBug",
+"language": "GDScript",
+"path": "res://CombatSystem/Battler/Actions/StatusEffects/StatusEffectBug.gd"
+}, {
+"base": "Reference",
+"class": "StatusEffectBuilder",
+"language": "GDScript",
+"path": "res://CombatSystem/Battler/Actions/StatusEffects/StatusEffectBuilder.gd"
+}, {
+"base": "Node",
+"class": "StatusEffectContainer",
+"language": "GDScript",
+"path": "res://CombatSystem/Battler/Actions/StatusEffects/StatusEffectContainer.gd"
+}, {
+"base": "Resource",
+"class": "StatusEffectData",
+"language": "GDScript",
+"path": "res://CombatSystem/Battler/Actions/StatusEffects/StatusEffectData.gd"
+}, {
+"base": "StatusEffect",
+"class": "StatusEffectHaste",
+"language": "GDScript",
+"path": "res://CombatSystem/Battler/Actions/StatusEffects/StatusEffectHaste.gd"
+}, {
+"base": "StatusEffect",
+"class": "StatusEffectSlow",
+"language": "GDScript",
+"path": "res://CombatSystem/Battler/Actions/StatusEffects/StatusEffectSlow.gd"
 }, {
 "base": "Reference",
 "class": "Types",
 "language": "GDScript",
-"path": "res://Types.gd"
+"path": "res://CombatSystem/Battler/Actions/Types.gd"
+}, {
+"base": "Control",
+"class": "UIActionMenu",
+"language": "GDScript",
+"path": "res://CombatSystem/UserInterface/UIActionMenu/UIActionMenu.gd"
+}, {
+"base": "TextureRect",
+"class": "UIBattlerHUD",
+"language": "GDScript",
+"path": "res://CombatSystem/UserInterface/UIBattlerHUD/UIBattlerHUD.gd"
+}, {
+"base": "TextureRect",
+"class": "UIBattlerIcon",
+"language": "GDScript",
+"path": "res://CombatSystem/UserInterface/UITurnBar/UIBattlerIcon.gd"
+}, {
+"base": "Position3D",
+"class": "UIDamageLabel",
+"language": "GDScript",
+"path": "res://CombatSystem/UserInterface/UIDamageLabel/UIDamageLabel.gd"
+}, {
+"base": "Node",
+"class": "UIDamageLabelBuilder",
+"language": "GDScript",
+"path": "res://CombatSystem/UserInterface/UIDamageLabel/UIDamageLabelBuilder.gd"
+}, {
+"base": "Position3D",
+"class": "UISelectBattlerArrow",
+"language": "GDScript",
+"path": "res://CombatSystem/UserInterface/UIActionMenu/UISelectBattlerArrow.gd"
 } ]
 _global_script_class_icons={
 "Action": "",
 "ActionData": "",
 "ActiveTurnQueue": "",
+"AggressiveBattlerAI": "",
+"AttackAction": "",
+"AttackActionData": "",
 "Battler": "",
+"BattlerAI": "",
+"BattlerAnim": "",
 "BattlerStats": "",
-"Types": ""
+"BattlerUIData": "",
+"Formulas": "",
+"Hit": "",
+"StatusEffect": "",
+"StatusEffectBug": "",
+"StatusEffectBuilder": "",
+"StatusEffectContainer": "",
+"StatusEffectData": "",
+"StatusEffectHaste": "",
+"StatusEffectSlow": "",
+"Types": "",
+"UIActionMenu": "",
+"UIBattlerHUD": "",
+"UIBattlerIcon": "",
+"UIDamageLabel": "",
+"UIDamageLabelBuilder": "",
+"UISelectBattlerArrow": ""
 }
 
 [application]
 
-config/name="Pokey-Men"
-run/main_scene="res://Scene.tscn"
+config/name="3D JRPG Combat Demo"
+run/main_scene="res://CombatDemo.tscn"
 config/icon="res://icon.png"
 
-[physics]
+[autoload]
 
-common/enable_pause_aware_picking=true
+Events="*res://CombatSystem/Autoloads/Events.gd"
+
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/size/test_width=1280
+window/size/test_height=720
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
 
 [rendering]
 
