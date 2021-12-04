@@ -12,6 +12,8 @@ var is_active := true setget set_is_active
 # Multiplier for the global pace of battle, to slow down time while the player is taking decisions.
 # This is meant for accessibility and to control difficulty.
 var time_scale := 1.0 setget set_time_scale
+# Time scale for when player is picking actions
+var slowed_time_scale := 0.05
 
 # Stack of player units that have to take turns.
 var _queue_player := []
@@ -62,7 +64,7 @@ func _play_turn(battler: Battler) -> void:
 	if battler.is_player_controlled():
 		battler.is_selected = true
 		_is_player_playing = true
-		set_time_scale(0.05)
+		set_time_scale(slowed_time_scale)
 		var is_selection_complete := false
 		# Wait for the player to select a valid action and target(s).
 		while not is_selection_complete:
