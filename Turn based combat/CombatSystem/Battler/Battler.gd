@@ -77,6 +77,7 @@ func battle_posit_setup(move_posit, look_posit) -> void:
 # Called on player battler when combat ends in victory
 func end_combat():
 	var controller = get_node("Controller")
+	_set_readiness(0)
 	controller.get_node("InnerGimbal/Camera").set_current(true)
 	controller.Direction = Vector3(0,0,0)
 	controller.active = true
@@ -175,3 +176,5 @@ func _on_BattlerStats_health_depleted() -> void:
 	if not is_party_member:
 		set_is_selectable(false)
 		battler_anim.queue_animation("die")
+		yield(battler_anim, "animation_finished")
+		queue_free()

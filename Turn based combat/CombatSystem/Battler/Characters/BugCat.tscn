@@ -44,10 +44,9 @@ shape = SubResource( 3 )
 
 [node name="Pivot" parent="BattlerAnim" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-visible = true
 
 [node name="MeshInstance" type="MeshInstance" parent="BattlerAnim/Pivot" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.50996e-07 )
 mesh = SubResource( 2 )
 material/0 = null
 
@@ -56,11 +55,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.258978, -1.53106 )
 mesh = SubResource( 4 )
 material/0 = null
 
-[node name="FrontAnchor" parent="BattlerAnim" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.06418, 0.903084, -1.1 )
-
 [node name="TopAnchor" parent="BattlerAnim" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, -0.2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, -3.47291e-07 )
 
 [node name="StatusEffectContainer" type="Node" parent="."]
 script = ExtResource( 9 )

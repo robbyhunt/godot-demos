@@ -1,38 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://CombatSystem/UserInterface/UIDamageLabel/UIDamageLabel.gd" type="Script" id=1]
 [ext_resource path="res://CombatSystem/UserInterface/UIDamageLabel/UIMissedLabel.gd" type="Script" id=3]
 
 [sub_resource type="ViewportTexture" id=1]
 viewport_path = NodePath("Viewport")
-
-[sub_resource type="Animation" id=2]
-resource_name = "disappear"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite3D:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 1, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite3D:opacity")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 1.0, 0.0 ]
-}
 
 [node name="UIDamageLabel" type="Position3D"]
 script = ExtResource( 1 )
@@ -42,15 +14,17 @@ color_armor = Color( 0.964706, 0.843137, 0.282353, 1 )
 color_energy = Color( 0.6, 0.717647, 0.831373, 1 )
 
 [node name="Viewport" type="Viewport" parent="."]
-size = Vector2( 24, 14 )
+size = Vector2( 30, 14 )
 transparent_bg = true
 render_target_v_flip = true
 script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="Viewport"]
-margin_right = 24.0
+margin_right = 30.0
 margin_bottom = 14.0
 text = "999"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -61,7 +35,3 @@ billboard = 1
 texture = SubResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "disappear"
-anims/disappear = SubResource( 2 )

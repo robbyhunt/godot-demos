@@ -17,12 +17,13 @@ func setup(battlers: Array, active_turn_queue: ActiveTurnQueue) -> void:
 
 func _on_Battler_damage_taken(amount: int, target: Battler) -> void:
 	var label: UIDamageLabel = damage_label_scene.instance()
-	label.setup(UIDamageLabel.Types.DAMAGE, target.battler_anim.get_top_anchor_global_transform(), amount)
+	label.setup(UIDamageLabel.Types.DAMAGE, amount)
 	_active_turn_queue.add_child(label)
+	label.global_transform = target.battler_anim.get_top_anchor_global_transform()
+	label.animate()
 
 
 func _on_Battler_hit_missed(target: Battler) -> void:
-	print("fix miss labels")
 	var label = miss_label_scene.instance()
 	_active_turn_queue.add_child(label)
 	label.global_transform = target.battler_anim.get_top_anchor_global_transform()

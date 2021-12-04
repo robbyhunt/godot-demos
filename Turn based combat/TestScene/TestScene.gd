@@ -15,7 +15,7 @@ func _on_setup_combat(enemy_battler: Battler, player_battler: Battler):
 	
 	# Instance new combat scene and add it to world at enemy battler's position
 	var new_combat = CombatScene.instance()
-	new_combat.global_transform.origin = enemy_battler.global_transform.origin
+	new_combat.transform.origin = enemy_battler.global_transform.origin
 	add_child(new_combat)
 	_combat_scene = new_combat
 	

@@ -597,6 +597,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1528, 5.36442e-07, 1.01489
 [node name="BugCat" parent="Actors" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.58039, 0, 0 )
 
+[node name="BugCat2" parent="Actors" instance=ExtResource( 8 )]
+transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 18.3342, 0, -2.70793 )
+
 [node name="Bear" parent="Actors" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.89833, 0, 6.40671 )
 

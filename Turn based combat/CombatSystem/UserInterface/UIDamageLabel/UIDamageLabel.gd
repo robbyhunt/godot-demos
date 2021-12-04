@@ -19,10 +19,9 @@ onready var _tween: Tween = $Tween
 onready var _sprite: Sprite3D = $Sprite3D
 
 
-func setup(type: int, start_global_transform: Transform, amount: int) -> void:
-	global_transform = start_global_transform
+func setup(type: int, amount: int) -> void:
 	_amount = amount
-
+	
 	match type:
 		Types.DAMAGE:
 			_set_color(color_damage)
@@ -36,7 +35,6 @@ func setup(type: int, start_global_transform: Transform, amount: int) -> void:
 
 func _ready() -> void:
 	_label.text = str(_amount)
-	_animate()
 
 
 func _set_color(value: Color) -> void:
@@ -46,15 +44,14 @@ func _set_color(value: Color) -> void:
 	_label.modulate = _color
 
 
-func _animate() -> void:
+func animate() -> void:
 	var side_movement = randi() % 3 - 1.5
-	print(side_movement)
 	_tween.interpolate_property(
 		self,
 		"translation",
 		translation,
-		Vector3(translation.x, translation.y + 0.5, translation.z + side_movement),
-		1,
+		Vector3(translation.x, translation.y + 1.25, translation.z + side_movement),
+		0.8,
 		Tween.TRANS_QUAD,
 		Tween.EASE_OUT
 	)

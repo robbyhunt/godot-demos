@@ -10,6 +10,6 @@ base_attack = 10.0
 base_defense = 4.0
 base_speed = 28.0
 base_hit_chance = 100.0
-base_evasion = 40.0
+base_evasion = 0.0
 weaknesses = [  ]
 affinity = 1

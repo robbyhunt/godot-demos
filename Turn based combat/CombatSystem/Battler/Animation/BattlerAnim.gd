@@ -17,8 +17,8 @@ var _translation_start := Vector3.ZERO
 
 onready var anim_player: AnimationPlayer = $Pivot/AnimationPlayer
 onready var anim_player_damage: AnimationPlayer = $Pivot/AnimationPlayerDamage
-onready var anchor_front: Position3D = $FrontAnchor
-onready var anchor_top: Position3D = $TopAnchor
+onready var anchor_front: Spatial = $FrontAnchor
+onready var anchor_top: Spatial = $TopAnchor
 onready var tween: Tween = $Tween
 
 
