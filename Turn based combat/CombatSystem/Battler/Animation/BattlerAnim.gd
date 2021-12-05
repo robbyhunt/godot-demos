@@ -13,17 +13,33 @@ enum Direction { LEFT, RIGHT }
 # Controls the direction in which the battler looks and moves.
 export (Direction) var direction := Direction.RIGHT setget set_direction
 
-var _translation_start := Vector3.ZERO
-
 onready var anim_player: AnimationPlayer = $Pivot/AnimationPlayer
 onready var anim_player_damage: AnimationPlayer = $Pivot/AnimationPlayerDamage
 onready var anchor_front: Spatial = $FrontAnchor
 onready var anchor_top: Spatial = $TopAnchor
 onready var tween: Tween = $Tween
+onready var battler_base = get_parent()
 
 
-func _ready() -> void:
-	_translation_start = translation
+func combat_init(target_posit: Vector3, enemy_posit: Vector3):
+	# Look at target move position, then move to it
+	battler_base.look_at(target_posit, Vector3.UP)
+	tween.interpolate_property(battler_base, "global_transform:origin", battler_base.global_transform.origin, target_posit, 2, Tween.TRANS_QUAD)
+	tween.start()
+	yield(tween, "tween_completed")
+	
+	# I need to know the target rotation_degrees but idk how to do that without applying the altered transform.
+	# Tweening the transform gives a weird effect so I'm setting the new transform, grabbing the rot value,
+	# then setting the og transform back BEFORE tweening to rotate. I know this is terrible but it's temporary lol.
+	# REPLACE
+	var start_transform = battler_base.global_transform
+	var target_transform = battler_base.global_transform.looking_at(enemy_posit, Vector3.UP)
+	battler_base.global_transform = target_transform
+	var target_rot = battler_base.rotation_degrees
+	battler_base.global_transform = start_transform
+	# Smooth look at the enemy position
+	tween.interpolate_property(battler_base, "rotation_degrees", battler_base.rotation_degrees, target_rot, 1, Tween.TRANS_QUAD)
+	tween.start()
 
 
 func play(anim_name: String) -> void:

@@ -39,6 +39,10 @@ func setup(_battlers) -> void:
 			_party_members.append(battler)
 		else:
 			_opponents.append(battler)
+	
+	# Wait for battlers to get into position before starting the combat logic
+	# REPLACE at some point with a check that each participating battler is ready
+	yield(get_tree().create_timer(2.5), "timeout")
 	set_is_active(true)
 
 

@@ -9,7 +9,7 @@ onready var active_turn_queue := $ActiveTurnQueue
 onready var ui_turn_bar := $UI/UITurnBar
 onready var ui_battler_hud_list := $UI/UIBattlerHUDList
 onready var ui_damage_label_builder := $UI/UIDamageLabelBuilder
-onready var camera = $Camera
+onready var camera := $Camera
 
 
 func _ready() -> void:
@@ -27,7 +27,6 @@ func setup(battlers) -> void:
 	ui_turn_bar.setup(battlers)
 	ui_battler_hud_list.setup(in_party)
 	ui_damage_label_builder.setup(battlers, active_turn_queue)
-	camera.set_current(true)
 
 
 # Returns an array of `Battler` who are in the same team as `actor`, including `actor`.

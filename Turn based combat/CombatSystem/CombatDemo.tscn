@@ -12,7 +12,7 @@
 [node name="CombatDemo" type="Spatial"]
 script = ExtResource( 2 )
 
-[node name="Camera" type="Camera" parent="."]
+[node name="Camera" type="Position3D" parent="."]
 transform = Transform( 0.679556, -0.186076, 0.709633, 0, 0.967299, 0.25364, -0.733623, -0.172363, 0.657334, 7.90062, 4.50731, 6.19524 )
 
 [node name="Player" type="Position3D" parent="."]

@@ -67,11 +67,10 @@ func setup(battlers: Array) -> void:
 
 # Called when combat is started to move battler into position and have it look at the enemy.
 # Also disables controller if battler is player controlled.
-func battle_posit_setup(move_posit, look_posit) -> void:
+func combat_init(target_posit: Vector3, enemy_posit: Vector3) -> void:
 	if is_player_controlled():
 		get_node("Controller").active = false
-	global_transform.origin = move_posit
-	look_at(look_posit, Vector3.UP)
+	battler_anim.combat_init(target_posit, enemy_posit)
 
 
 # Called on player battler when combat ends in victory

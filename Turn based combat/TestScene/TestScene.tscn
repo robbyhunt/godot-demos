@@ -45,7 +45,7 @@ light_energy = 0.5
 shadow_enabled = true
 
 [node name="CSGBox" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -32 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, -0.125, -32 )
 use_collision = true
 width = 100.0
 height = 0.25
@@ -53,7 +53,7 @@ depth = 100.0
 material = SubResource( 1 )
 
 [node name="Trees" type="Spatial" parent="."]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.125, 0 )
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.125, 0 )
 
 [node name="Hilly_Prop_Tree_Oak_4" parent="Trees" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0591846, -1.19209e-07, -11.4789 )
@@ -119,7 +119,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.89629, -5.96046e-08, 3.9998
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55672, 0, -6.62781 )
 
 [node name="Hilly_Prop_Tree_Oak_29" parent="Trees" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.68304, 0.225009, 2.17352 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.68304, 0.0152049, 2.17352 )
 
 [node name="Hilly_Prop_Tree_Oak_30" parent="Trees" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02474, 0, -13.2724 )
@@ -224,7 +224,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.37406, -5.96046e-08, -5.6090
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55672, 0, -28.9493 )
 
 [node name="Hilly_Prop_Tree_Oak_55" parent="Trees" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.68304, 0.225009, -20.1479 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.68304, -0.0149799, -20.1479 )
 
 [node name="Hilly_Prop_Tree_Oak_56" parent="Trees" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02474, 0, -35.5938 )
@@ -386,7 +386,7 @@ transform = Transform( -0.94221, 0, -0.335024, 0, 1, 0, 0.335024, 0, -0.94221, -
 transform = Transform( -0.94221, 0, -0.335024, 0, 1, 0, 0.335024, 0, -0.94221, -19.343, 0, -11.7948 )
 
 [node name="Hilly_Prop_Tree_Oak_121" parent="Trees" instance=ExtResource( 2 )]
-transform = Transform( -0.94221, 0, -0.335024, 0, 1, 0, 0.335024, 0, -0.94221, -18.4038, 0.225009, -21.4699 )
+transform = Transform( -0.94221, 0, -0.335024, 0, 1, 0, 0.335024, 0, -0.94221, -18.4038, -0.0917717, -21.4699 )
 
 [node name="Hilly_Prop_Tree_Oak_122" parent="Trees" instance=ExtResource( 2 )]
 transform = Transform( -0.94221, 0, -0.335024, 0, 1, 0, 0.335024, 0, -0.94221, -23.318, 0, -3.32928 )
@@ -482,7 +482,7 @@ transform = Transform( 0.97276, 0, 0.231816, 0, 1, 0, -0.231816, 0, 0.97276, -25
 transform = Transform( 0.97276, 0, 0.231816, 0, 1, 0, -0.231816, 0, 0.97276, -25.2884, 0, -27.2744 )
 
 [node name="Hilly_Prop_Tree_Oak_154" parent="Trees" instance=ExtResource( 2 )]
-transform = Transform( 0.97276, 0, 0.231816, 0, 1, 0, -0.231816, 0, 0.97276, -27.262, 0.225009, -17.7562 )
+transform = Transform( 0.97276, 0, 0.231816, 0, 1, 0, -0.231816, 0, 0.97276, -27.262, 0.00112882, -17.7562 )
 
 [node name="Hilly_Prop_Tree_Oak_155" parent="Trees" instance=ExtResource( 2 )]
 transform = Transform( 0.97276, 0, 0.231816, 0, 1, 0, -0.231816, 0, 0.97276, -20.4265, 0, -35.2636 )
