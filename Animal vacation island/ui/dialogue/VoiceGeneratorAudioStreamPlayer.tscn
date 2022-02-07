@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/dialogue/VoiceGeneratorAudioStreamPlayer.gd" type="Script" id=1]
+[ext_resource path="res://ui/dialogue/v2.ogg" type="AudioStream" id=2]
+
+[sub_resource type="AudioStreamRandomPitch" id=1]
+audio_stream = ExtResource( 2 )
+
+[sub_resource type="AudioStreamRandomPitch" id=2]
+audio_stream = ExtResource( 2 )
+
+[node name="VoiceGeneratorAudioStreamPlayer" type="AudioStreamPlayer"]
+stream = SubResource( 1 )
+bus = "Voice"
+script = ExtResource( 1 )
+
+[node name="Overflow" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 2 )
+bus = "Voice"

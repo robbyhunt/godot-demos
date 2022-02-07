@@ -1,0 +1,288 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://models/building/floor/FloorSmall04.tscn" type="PackedScene" id=1]
+[ext_resource path="res://models/props/Screen07.tscn" type="PackedScene" id=2]
+[ext_resource path="res://models/building/wall/WallDoorframe06.tscn" type="PackedScene" id=3]
+[ext_resource path="res://models/building/wall/Wall06.tscn" type="PackedScene" id=4]
+[ext_resource path="res://models/building/wall/WallPillar03.tscn" type="PackedScene" id=5]
+[ext_resource path="res://models/building/ceiling/Ceiling01.tscn" type="PackedScene" id=6]
+[ext_resource path="res://models/props/ChrMaleCryo02.tscn" type="PackedScene" id=7]
+[ext_resource path="res://models/props/ChrFemaleCryo02.tscn" type="PackedScene" id=8]
+[ext_resource path="res://models/props/CryoBed01.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scripts/InteractiveScreen.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scripts/TestPad.gd" type="Script" id=11]
+[ext_resource path="res://models/props/LightSmall08.tscn" type="PackedScene" id=12]
+[ext_resource path="res://ui/assets/panel.png" type="Texture" id=13]
+[ext_resource path="res://materials/textures/Alts/PolygonSciFiSpace_Texture_02_B.png" type="Texture" id=14]
+
+[sub_resource type="SpatialMaterial" id=3]
+roughness = 0.0
+emission_enabled = true
+emission = Color( 0, 0.87451, 0.0941176, 1 )
+emission_energy = 4.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="CapsuleMesh" id=4]
+material = SubResource( 3 )
+radius = 0.035
+radial_segments = 5
+rings = 1
+
+[sub_resource type="SpatialMaterial" id=5]
+flags_unshaded = true
+albedo_color = Color( 0.360784, 0.360784, 0.360784, 1 )
+albedo_texture = ExtResource( 14 )
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("EmergencyLight:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -180, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "emergency"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("EmergencyLight:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -180, 0, 0 ), Vector3( -180, 360, 0 ) ]
+}
+
+[node name="CryoRoom" type="Spatial"]
+
+[node name="Ceiling" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0 )
+
+[node name="Ceiling01" parent="Ceiling" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+skeleton = NodePath("")
+
+[node name="Ceiling03" parent="Ceiling" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 5 )
+skeleton = NodePath("")
+
+[node name="Ceiling04" parent="Ceiling" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -1, 5 )
+skeleton = NodePath("")
+
+[node name="Ceiling05" parent="Ceiling" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -1, 0 )
+skeleton = NodePath("")
+
+[node name="Walls" type="Spatial" parent="."]
+
+[node name="Wall06" parent="Walls" instance=ExtResource( 4 )]
+
+[node name="Wall07" parent="Walls" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5, 0, 10 )
+
+[node name="Wall09" parent="Walls" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0 )
+
+[node name="Wall10" parent="Walls" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 10 )
+
+[node name="Wall08" parent="Walls" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, 5 )
+
+[node name="Wall11" parent="Walls" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, 10 )
+
+[node name="Wall12" parent="Walls" instance=ExtResource( 4 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 5, 0, 5 )
+
+[node name="WallDoorframe06" parent="Walls" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.2682, 0, -5.61488 )
+is_locked = true
+
+[node name="Screen07" parent="Walls/WallDoorframe06" instance=ExtResource( 2 )]
+transform = Transform( 1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 8.86966, 1.61145, 7.60119 )
+skeleton = NodePath("")
+
+[node name="InteractiveScreen" parent="Walls/WallDoorframe06/Screen07" instance=ExtResource( 10 )]
+transform = Transform( 1.06581e-14, 1, 8.74228e-08, -4.65881e-22, -8.74228e-08, 1, 1, -1.06581e-14, -3.14712e-28, 0, 0.0231996, 0.00105953 )
+size_x = 0.15
+size_y = 0.18
+
+[node name="Content" type="Control" parent="Walls/WallDoorframe06/Screen07/InteractiveScreen"]
+margin_right = 100.0
+margin_bottom = 130.0
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+door_path = NodePath("../../..")
+
+[node name="Panel" type="NinePatchRect" parent="Walls/WallDoorframe06/Screen07/InteractiveScreen/Content"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 3.0
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Walls/WallDoorframe06/Screen07/InteractiveScreen/Content/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Walls/WallDoorframe06/Screen07/InteractiveScreen/Content/Panel/CenterContainer"]
+margin_left = 27.0
+margin_top = 46.0
+margin_right = 74.0
+margin_bottom = 84.0
+
+[node name="Label" type="Label" parent="Walls/WallDoorframe06/Screen07/InteractiveScreen/Content/Panel/CenterContainer/VBoxContainer"]
+margin_right = 47.0
+margin_bottom = 14.0
+
+[node name="Button" type="Button" parent="Walls/WallDoorframe06/Screen07/InteractiveScreen/Content/Panel/CenterContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 47.0
+margin_bottom = 38.0
+text = "testtt"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LightEmissive" type="MeshInstance" parent="Walls/WallDoorframe06"]
+transform = Transform( -4.51556e-08, 1.1143e-08, -1, -0.254923, 0.966961, 2.2286e-08, 0.966961, 0.254923, -4.08231e-08, 8.13579, 2.435, 7.62947 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="WallPillar03" parent="Walls" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, -0.548902, 5 )
+skeleton = NodePath("")
+
+[node name="WallPillar06" parent="Walls" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, -0.548902, 5 )
+skeleton = NodePath("")
+
+[node name="Floor" type="Spatial" parent="."]
+
+[node name="FloorSmall04" parent="Floor" instance=ExtResource( 1 )]
+
+[node name="FloorSmall05" parent="Floor" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0 )
+
+[node name="FloorSmall06" parent="Floor" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5 )
+
+[node name="FloorSmall08" parent="Floor" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0 )
+
+[node name="FloorSmall09" parent="Floor" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 2.5 )
+
+[node name="FloorSmall10" parent="Floor" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0 )
+
+[node name="FloorSmall11" parent="Floor" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 2.5 )
+
+[node name="FloorSmall07" parent="Floor" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 2.5 )
+
+[node name="FloorSmall12" parent="Floor" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
+
+[node name="FloorSmall13" parent="Floor" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 5 )
+
+[node name="FloorSmall14" parent="Floor" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 5 )
+
+[node name="FloorSmall15" parent="Floor" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 5 )
+
+[node name="FloorSmall16" parent="Floor" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.5 )
+
+[node name="FloorSmall17" parent="Floor" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 7.5 )
+
+[node name="FloorSmall18" parent="Floor" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 7.5 )
+
+[node name="FloorSmall19" parent="Floor" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 7.5 )
+
+[node name="Props" type="Spatial" parent="."]
+
+[node name="CryoBed01" parent="Props" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.5, 0, 7.5 )
+
+[node name="ChrMaleCryo02" parent="Props/CryoBed01" instance=ExtResource( 7 )]
+transform = Transform( 0.859686, 0.0696178, 0.506057, -0.510595, 0.0875054, 0.855357, 0.0152654, -0.993728, 0.110774, 0, 0.941403, -0.283619 )
+
+[node name="CryoBed02" parent="Props" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.5, 0, 7.5 )
+
+[node name="ChrFemaleCryo02" parent="Props/CryoBed02" instance=ExtResource( 8 )]
+transform = Transform( 0.859684, 0.0696147, 0.50606, -0.510598, 0.0875073, 0.855355, 0.0152614, -0.993728, 0.110774, 0, 0.941, -0.284 )
+
+[node name="CryoBed03" parent="Props" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 7.5 )
+
+[node name="Hinge" parent="Props/CryoBed03" index="0"]
+transform = Transform( 1, 4.23006e-08, 1.09153e-08, -4.23006e-08, 0.875144, 0.483863, 1.09153e-08, -0.483863, 0.875144, 0, 1.05036, -1.60511 )
+
+[node name="Lights" type="Spatial" parent="."]
+
+[node name="OmniLight3" type="OmniLight" parent="Lights"]
+transform = Transform( 1, 7.10543e-15, -2.98023e-08, -7.10543e-15, 1, 3.55271e-15, 2.98023e-08, -3.55271e-15, 1, 4.43097, 2.2696, 2.50603 )
+light_color = Color( 0, 1, 0.109804, 1 )
+light_energy = 0.25
+shadow_enabled = true
+omni_range = 2.0
+
+[node name="EmergencyLight" parent="Lights" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, -0.00032115, 2.79675, 5.01967 )
+material_override = SubResource( 5 )
+
+[node name="Spotlight" type="SpotLight" parent="Lights/EmergencyLight"]
+transform = Transform( 1, 7.7134e-09, 2.87868e-08, 0, 0.965926, -0.258819, -2.98023e-08, 0.258819, 0.965926, 0, 0.166028, -0.0900002 )
+light_color = Color( 1, 0, 0, 1 )
+spot_range = 8.0
+
+[node name="Spotlight2" type="SpotLight" parent="Lights/EmergencyLight"]
+transform = Transform( -1, -2.31402e-08, -8.63605e-08, 3.55271e-15, 0.965926, -0.258819, 8.9407e-08, -0.258819, -0.965926, 0, 0.166028, 0.0900002 )
+light_color = Color( 1, 0, 0, 1 )
+spot_range = 8.0
+
+[node name="OmniLight" type="OmniLight" parent="Lights/EmergencyLight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0 )
+light_color = Color( 1, 0.537255, 0.537255, 1 )
+light_energy = 0.1
+omni_range = 8.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Lights"]
+autoplay = "emergency"
+anims/RESET = SubResource( 1 )
+anims/emergency = SubResource( 2 )
+
+[connection signal="pressed" from="Walls/WallDoorframe06/Screen07/InteractiveScreen/Content/Panel/CenterContainer/VBoxContainer/Button" to="Walls/WallDoorframe06/Screen07/InteractiveScreen/Content" method="_on_Button_pressed"]
+
+[editable path="Props/CryoBed03"]

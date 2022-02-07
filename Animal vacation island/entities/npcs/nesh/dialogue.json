@@ -1,0 +1,66 @@
+{
+  "name": "Nesh",
+  "voice_pitch": 1.4,
+  "voice_pitch_variation": 1.2,
+  "voice_speed": 0.8,
+  "dialogues": {
+    "default": {
+      "message": "Hi, I'm Nesh!",
+      "signals": [],
+      "options": [
+        {
+          "message": "It's so hot!",
+          "conditions": [],
+          "leads_to": "hot",
+          "signals": []
+        },
+        {
+          "message": "I like your hat.",
+          "conditions": [],
+          "leads_to": "compliment_hat",
+          "signals": []
+        },
+        {
+          "message": "Seeya around, Nesh",
+          "conditions": [],
+          "leads_to": "end_dialog",
+          "signals": []
+        }
+      ]
+    },
+    "hot": {
+      "message": "Oh, god. Isn't it just.",
+      "signals": [
+        {
+          "type": "npc_anim",
+          "value": "sad"
+        }
+      ],
+      "options": [
+        {
+          "message": "Hang in there.",
+          "conditions": [],
+          "leads_to": "end_dialog",
+          "signals": []
+        }
+      ]
+    },
+    "compliment_hat": {
+      "message": "Wahoo! Thank you so much, I put a lot of thought into my outfit today.",
+      "signals": [
+        {
+          "type": "npc_anim",
+          "value": "jump"
+        }
+      ],
+      "options": [
+        {
+          "message": "Keep it up.",
+          "conditions": [],
+          "leads_to": "end_dialog",
+          "signals": []
+        }
+      ]
+    }
+  }
+}

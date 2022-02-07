@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://models/building/hangar/Door_01.tscn" type="PackedScene" id=1]
+[ext_resource path="res://models/building/hangar/HangarDoor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://models/building/hangar/Door_03.tscn" type="PackedScene" id=3]
+[ext_resource path="res://models/building/hangar/HangarFloor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://models/building/hangar/HangarGlass.tscn" type="PackedScene" id=5]
+[ext_resource path="res://models/building/hangar/Hangar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://models/building/hangar/HangarCeiling.tscn" type="PackedScene" id=7]
+
+[node name="Hangar" type="Spatial"]
+
+[node name="Hangar" parent="." instance=ExtResource( 6 )]
+skeleton = NodePath("")
+
+[node name="HangarDoor" parent="." instance=ExtResource( 2 )]
+
+[node name="HangerCeiling" parent="." instance=ExtResource( 7 )]
+skeleton = NodePath("../Hangar")
+
+[node name="HangerGlass" parent="." instance=ExtResource( 5 )]
+skeleton = NodePath("../Hangar")
+
+[node name="HangerFloor" parent="." instance=ExtResource( 4 )]
+skeleton = NodePath("../Hangar")
+
+[node name="Door_01" parent="." instance=ExtResource( 1 )]
+skeleton = NodePath("../Hangar")
+
+[node name="Door_02" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 5.049, 0 )
+skeleton = NodePath("../Hangar")
+
+[node name="Door_03" parent="." instance=ExtResource( 3 )]
+skeleton = NodePath("../Hangar")

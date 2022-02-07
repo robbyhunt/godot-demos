@@ -1,0 +1,96 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://props/tree/assets/meshes/Tree1.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://props/tree/Tree.gd" type="Script" id=2]
+[ext_resource path="res://entities/npcs/common/assets/interact.png" type="Texture" id=3]
+[ext_resource path="res://globe_shader.gdshader" type="Shader" id=4]
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 4 )
+shader_param/active = false
+shader_param/radius = 80.0
+shader_param/origin = Vector3( 0, -80, 0 )
+shader_param/albedo = Color( 0.184314, 0.537255, 0.0823529, 1 )
+shader_param/specular = 0.5
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = 1.0
+shader_param/uv1_scale = Vector3( 100, 100, 0 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 4 )
+shader_param/active = false
+shader_param/radius = 80.0
+shader_param/origin = Vector3( 0, -80, 0 )
+shader_param/albedo = Color( 0.509804, 0.352941, 0.188235, 1 )
+shader_param/specular = 0.5
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = 1.0
+shader_param/uv1_scale = Vector3( 100, 100, 0 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.7, 2, 0.7 )
+
+[sub_resource type="Animation" id=4]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Tree:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.8, 0 ), Vector3( -0.011, 0.8, 0 ), Vector3( 0.022, 0.8, 0.045 ), Vector3( 0.052, 0.8, 0.03 ), Vector3( -0.032, 0.75, 0.11 ), Vector3( 0, 0.8, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Tree:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0.72 ), Vector3( -1.40189, -0.0176211, -1.14278 ), Vector3( 1.65218, -0.0461481, -0.762071 ), Vector3( 3.31503, -0.0396491, -0.381635 ), Vector3( 0, 0, 0 ) ]
+}
+
+[node name="Tree" type="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1 )
+input_ray_pickable = false
+collision_layer = 9
+script = ExtResource( 2 )
+
+[node name="Tree" type="MeshInstance" parent="." groups=[
+"globe_shader",
+]]
+transform = Transform( 0.999921, -0.0125661, 0, 0.0125661, 0.999921, 0, 0, 0, 1, -0.011, 0.8, 0 )
+mesh = ExtResource( 1 )
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/shake = SubResource( 4 )
+
+[node name="InteractIcon" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.19263, 0 )
+visible = false
+pixel_size = 0.04
+billboard = 2
+texture = ExtResource( 3 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

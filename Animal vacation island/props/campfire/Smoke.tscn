@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.242038, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.713376, 0.990909 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 0.2
+spread = 0.0
+gravity = Vector3( 0, 4, 0 )
+angular_velocity = 90.0
+angular_velocity_random = 1.0
+scale = 0.15
+scale_curve = SubResource( 2 )
+color = Color( 0.494118, 0.494118, 0.494118, 0.207843 )
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id=5]
+material = SubResource( 4 )
+
+[node name="Smoke" type="Particles"]
+amount = 50
+lifetime = 2.0
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 5 )

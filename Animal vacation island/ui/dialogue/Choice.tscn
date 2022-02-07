@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="Choice" type="Label"]
+margin_right = 100.0
+margin_bottom = 24.0
+text = "An option."
+valign = 1

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/dialogue/Cursor.gd" type="Script" id=1]
+[ext_resource path="res://ui/common/assets/cursor-2.png" type="Texture" id=2]
+[ext_resource path="res://ui/common/assets/cursor.png" type="Texture" id=3]
+
+[sub_resource type="AnimatedTexture" id=1]
+frames = 2
+fps = 2.0
+frame_0/texture = ExtResource( 3 )
+frame_1/texture = ExtResource( 2 )
+frame_1/delay_sec = 0.0
+
+[node name="Cursor" type="TextureRect"]
+margin_left = 574.348
+margin_top = 47.6656
+margin_right = 590.348
+margin_bottom = 63.6656
+rect_scale = Vector2( 2, 1.8 )
+texture = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+menu_parent_path = NodePath("../Choices")
+cursor_offset = Vector2( -10, 3 )
