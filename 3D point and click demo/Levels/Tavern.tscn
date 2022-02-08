@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
+[ext_resource path="res://Flagonlord.wav" type="AudioStream" id=1]
 [ext_resource path="res://Levels/meshes/tavern.gltf" type="PackedScene" id=2]
 [ext_resource path="res://Levels/meshes/lights.gltf" type="PackedScene" id=3]
 [ext_resource path="res://LooseScripts/CameraController.gd" type="Script" id=4]
@@ -26,6 +27,9 @@ extents = Vector3( 0.6, 0.1, 1.4 )
 [sub_resource type="BoxShape" id=10]
 extents = Vector3( 0.3, 0.1, 1.4 )
 
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 0.134089, 0.1, 1.4 )
+
 [sub_resource type="BoxShape" id=6]
 extents = Vector3( 0.4, 0.1, 1.4 )
 
@@ -50,7 +54,7 @@ navmesh = SubResource( 3 )
 [node name="Characters" type="Spatial" parent="."]
 
 [node name="Player" parent="Characters" instance=ExtResource( 80 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.02349, 0, 1.95503 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.11737, 0, -3.24061 )
 
 [node name="NPC" parent="Characters" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.674827, 0, -6.15477 )
@@ -208,7 +212,6 @@ omni_range = 9.8
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.29187, 2.05318, -2.98727 )
 light_color = Color( 0.921569, 0.603922, 0.192157, 1 )
 light_energy = 1.5
-light_bake_mode = 0
 shadow_enabled = true
 omni_range = 9.8
 
@@ -364,25 +367,25 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.720429, 0, 0 )
 shape = SubResource( 4 )
 
 [node name="CameraTrigger4" parent="CameraController/CameraTriggers" instance=ExtResource( 5 )]
-transform = Transform( 0.946136, 0, 0.323769, 0, 1, 0, -0.323769, 0, 0.946136, 5.3957, 0.2, -2.91426 )
+transform = Transform( 0.978078, 0, 0.208236, 0, 1, 0, -0.208236, 0, 0.978078, 5.18425, 0.2, -2.84829 )
 mount_id1 = 2
 mount_id2 = 3
 
 [node name="Exit1" parent="CameraController/CameraTriggers/CameraTrigger4" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0939202, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.258313, 0, 4.76837e-07 )
 
 [node name="CollisionShape" parent="CameraController/CameraTriggers/CameraTrigger4/Exit1" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.532258, 0, -2.38419e-07 )
 shape = SubResource( 4 )
 
 [node name="CollisionShape" parent="CameraController/CameraTriggers/CameraTrigger4/Listener" index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 12 )
 
 [node name="Exit2" parent="CameraController/CameraTriggers/CameraTrigger4" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0767374, 0, 0 )
 
 [node name="CollisionShape" parent="CameraController/CameraTriggers/CameraTrigger4/Exit2" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.559831, 0, -3.57628e-07 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.333613, 0, 1.19209e-07 )
 shape = SubResource( 4 )
 
 [node name="CameraTrigger5" parent="CameraController/CameraTriggers" instance=ExtResource( 5 )]
@@ -564,6 +567,11 @@ shape = SubResource( 11 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 83 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+
+[editable path="Characters/Player"]
 [editable path="World/lights"]
 [editable path="CameraController/CameraTriggers/CameraTrigger"]
 [editable path="CameraController/CameraTriggers/CameraTrigger2"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Flagonlord.wav-99b3d64b6ca24faf62b6dcfc6b9fd463.sample"
+
+[deps]
+
+source_file="res://Flagonlord.wav"
+dest_files=[ "res://.import/Flagonlord.wav-99b3d64b6ca24faf62b6dcfc6b9fd463.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
