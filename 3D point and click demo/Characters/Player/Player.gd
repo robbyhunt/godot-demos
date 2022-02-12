@@ -5,7 +5,8 @@ onready var scene_base = get_owner()
 onready var camera_controller = scene_base.get_node("CameraController")
 onready var camera = camera_controller.get_node("Tripod/Camera")
 
-var is_moving
+var look_at_loc
+
 var interact_on_arrive
 
 
@@ -13,8 +14,16 @@ func _ready():
 	movement_controller.connect("destination_reached", self, "_on_destination_reached")
 
 
+func _process(delta):
+	look_at_loc = camera.global_transform.origin
+	$Sprite.look_at(Vector3(look_at_loc.x, self.global_transform.origin.y, look_at_loc.z), Vector3.UP)
+
+
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
+		if InteractionManager.object_interacting:
+			InteractionManager.end_interaction()
+		
 		if InteractionManager.is_mouse_hovering:
 			move_to_position(InteractionManager.object_hovered.interact_spot_global_pos, true)
 		else:
@@ -37,8 +46,10 @@ func get_click_pos(event):
 	print(result.position)
 	return result.position
 
+
 func _on_destination_reached():
 	$AnimationPlayer.play("idle", .2, 1)
 	if interact_on_arrive:
 		interact_on_arrive = false
 		InteractionManager.interact()
+

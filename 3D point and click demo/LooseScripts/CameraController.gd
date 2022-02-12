@@ -1,5 +1,6 @@
 extends Spatial
 
+onready var camera = get_node("Tripod/Camera")
 onready var camera_mounts = get_node("CameraMounts").get_children()
 onready var camera_triggers = get_node("CameraTriggers").get_children()
 onready var tripod = get_node("Tripod")
@@ -8,6 +9,8 @@ onready var tripod_tween = get_node("Tripod/Tween")
 var cur_mount_id = 0
 var target_mount_transform: Transform
 var is_moving = false
+
+signal destination_reached
 
 
 func _ready():
@@ -18,6 +21,9 @@ func _ready():
 	tripod_tween.connect("tween_completed", self, "_on_camera_arrived")
 	
 	tripod.transform = camera_mounts[0].transform
+	
+	InteractionManager.camera_controller = self
+	connect("destination_reached", InteractionManager, "_on_camera_destination_reached")
 
 
 func _on_trigger_entered(area, trigger):
@@ -50,3 +56,4 @@ func move_camera():
 
 func _on_camera_arrived(_object, _property):
 	is_moving = false
+	emit_signal("destination_reached")

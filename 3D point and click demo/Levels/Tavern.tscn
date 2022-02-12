@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Flagonlord.wav" type="AudioStream" id=1]
 [ext_resource path="res://Levels/meshes/tavern.gltf" type="PackedScene" id=2]
@@ -42,9 +42,6 @@ extents = Vector3( 0.6, 0.1, 1.4 )
 [sub_resource type="BoxShape" id=9]
 extents = Vector3( 1.2, 0.1, 1.4 )
 
-[sub_resource type="BoxShape" id=11]
-extents = Vector3( 0.2, 0.1, 0.7 )
-
 [node name="Navigation" type="Navigation"]
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="."]
@@ -54,7 +51,7 @@ navmesh = SubResource( 3 )
 [node name="Characters" type="Spatial" parent="."]
 
 [node name="Player" parent="Characters" instance=ExtResource( 80 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.11737, 0, -3.24061 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.33466, 0, 1.94731 )
 
 [node name="NPC" parent="Characters" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.674827, 0, -6.15477 )
@@ -92,24 +89,28 @@ cast_shadow = 0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46994, 1.80537, -0.821218 )
 light_color = Color( 0.921569, 0.603922, 0.192157, 1 )
 light_bake_mode = 0
+light_cull_mask = 4294967293
 shadow_enabled = true
 
 [node name="Candle6" type="OmniLight" parent="Lights"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.421545, 1.38447, -5.07833 )
 light_color = Color( 0.921569, 0.603922, 0.192157, 1 )
 light_bake_mode = 0
+light_cull_mask = 4294967293
 shadow_enabled = true
 
 [node name="Candle2" type="OmniLight" parent="Lights"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65459, 1.81463, -0.658529 )
 light_color = Color( 0.921569, 0.603922, 0.192157, 1 )
 light_bake_mode = 0
+light_cull_mask = 4294967293
 shadow_enabled = true
 
 [node name="Candle3" type="OmniLight" parent="Lights"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.80745, 5.75734, 14.8011 )
 light_color = Color( 0.921569, 0.603922, 0.192157, 1 )
 light_bake_mode = 0
+light_cull_mask = 4294967293
 shadow_enabled = true
 omni_range = 6.1
 
@@ -117,6 +118,7 @@ omni_range = 6.1
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.84816, 5.75734, 8.37563 )
 light_color = Color( 0.921569, 0.603922, 0.192157, 1 )
 light_bake_mode = 0
+light_cull_mask = 4294967293
 shadow_enabled = true
 omni_range = 6.1
 
@@ -124,6 +126,7 @@ omni_range = 6.1
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2689, 5.75734, 15.2468 )
 light_color = Color( 0.921569, 0.603922, 0.192157, 1 )
 light_bake_mode = 0
+light_cull_mask = 4294967293
 shadow_enabled = true
 omni_range = 6.1
 
@@ -131,12 +134,14 @@ omni_range = 6.1
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07658, 0.741844, 2.96963 )
 light_color = Color( 0.94902, 0.345098, 0.184314, 1 )
 light_bake_mode = 0
+light_cull_mask = 4294967293
 shadow_enabled = true
 
 [node name="Window2" type="OmniLight" parent="Lights"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.00237, 5.68495, -5.95241 )
 light_color = Color( 0.192157, 0.615686, 0.921569, 1 )
 light_bake_mode = 0
+light_cull_mask = 4294967293
 shadow_enabled = true
 omni_range = 19.3
 
@@ -144,6 +149,7 @@ omni_range = 19.3
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.46873, 5.89256, 1.91426 )
 light_color = Color( 0.192157, 0.615686, 0.921569, 1 )
 light_bake_mode = 0
+light_cull_mask = 4294967293
 shadow_enabled = true
 omni_range = 19.3
 
@@ -151,6 +157,7 @@ omni_range = 19.3
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.46873, 5.89256, 9.88519 )
 light_color = Color( 0.192157, 0.615686, 0.921569, 1 )
 light_bake_mode = 0
+light_cull_mask = 4294967293
 shadow_enabled = true
 omni_range = 19.3
 
@@ -158,6 +165,7 @@ omni_range = 19.3
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.03674, 5.89256, 14.8464 )
 light_color = Color( 0.192157, 0.615686, 0.921569, 1 )
 light_bake_mode = 0
+light_cull_mask = 4294967293
 shadow_enabled = true
 omni_range = 19.3
 
@@ -165,6 +173,7 @@ omni_range = 19.3
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7762, 5.89256, 14.106 )
 light_color = Color( 0.192157, 0.615686, 0.921569, 1 )
 light_bake_mode = 0
+light_cull_mask = 4294967293
 shadow_enabled = true
 omni_range = 19.3
 
@@ -173,6 +182,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1343, 6.30779, 2.13397 )
 light_color = Color( 0.921569, 0.603922, 0.192157, 1 )
 light_energy = 1.5
 light_bake_mode = 0
+light_cull_mask = 4294967293
 shadow_enabled = true
 omni_range = 9.8
 
@@ -181,6 +191,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1343, 6.30779, -5.86299 )
 light_color = Color( 0.921569, 0.603922, 0.192157, 1 )
 light_energy = 1.5
 light_bake_mode = 0
+light_cull_mask = 4294967293
 shadow_enabled = true
 omni_range = 9.8
 
@@ -189,6 +200,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.90338, 6.30779, 7.2639 )
 light_color = Color( 0.921569, 0.603922, 0.192157, 1 )
 light_energy = 1.5
 light_bake_mode = 0
+light_cull_mask = 4294967293
 shadow_enabled = true
 omni_range = 9.8
 
@@ -197,6 +209,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09834, 6.30779, 7.2639 )
 light_color = Color( 0.921569, 0.603922, 0.192157, 1 )
 light_energy = 1.5
 light_bake_mode = 0
+light_cull_mask = 4294967293
 shadow_enabled = true
 omni_range = 9.8
 
@@ -205,6 +218,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.71913, 2.05318, -3.27527 )
 light_color = Color( 0.921569, 0.603922, 0.192157, 1 )
 light_energy = 1.5
 light_bake_mode = 0
+light_cull_mask = 4294967293
 shadow_enabled = true
 omni_range = 9.8
 
@@ -212,6 +226,7 @@ omni_range = 9.8
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.29187, 2.05318, -2.98727 )
 light_color = Color( 0.921569, 0.603922, 0.192157, 1 )
 light_energy = 1.5
+light_cull_mask = 4294967293
 shadow_enabled = true
 omni_range = 9.8
 
@@ -542,36 +557,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0767374, 0, 0 )
 transform = Transform( 1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, 0.748286, 0, 0.0027647 )
 shape = SubResource( 4 )
 
-[node name="CameraTrigger12" parent="CameraController/CameraTriggers" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.727006, 0.2, -4.05709 )
-mount_id1 = 1
-mount_id2 = 11
-
-[node name="Exit1" parent="CameraController/CameraTriggers/CameraTrigger12" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.323317, 0, 0 )
-
-[node name="CollisionShape" parent="CameraController/CameraTriggers/CameraTrigger12/Exit1" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.735724, 0, 0 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape" parent="CameraController/CameraTriggers/CameraTrigger12/Listener" index="0"]
-shape = SubResource( 11 )
-
-[node name="Exit2" parent="CameraController/CameraTriggers/CameraTrigger12" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.302097, 0, 0 )
-
-[node name="CollisionShape" parent="CameraController/CameraTriggers/CameraTrigger12/Exit2" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.720429, 0, -5.96046e-08 )
-shape = SubResource( 11 )
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 83 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
-autoplay = true
 
-[editable path="Characters/Player"]
 [editable path="World/lights"]
 [editable path="CameraController/CameraTriggers/CameraTrigger"]
 [editable path="CameraController/CameraTriggers/CameraTrigger2"]
@@ -584,4 +575,3 @@ autoplay = true
 [editable path="CameraController/CameraTriggers/CameraTrigger9"]
 [editable path="CameraController/CameraTriggers/CameraTrigger10"]
 [editable path="CameraController/CameraTriggers/CameraTrigger11"]
-[editable path="CameraController/CameraTriggers/CameraTrigger12"]
