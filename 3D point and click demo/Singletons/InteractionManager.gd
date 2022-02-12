@@ -1,32 +1,30 @@
 extends Node
 
-var is_mouse_hovering = false
+var camera_controller
+var return_camera_mount
+
 var object_hovered
 var object_queued
 var object_interacting
-
 var waiting_for_camera = false
-
-var camera_controller
-
-var return_camera_mount
 
 
 func hover(object):
-	if is_mouse_hovering and object_hovered.has_method("unhover"):
+	if object_hovered and object_hovered.has_method("unhover"):
 		object_hovered.unhover()
-	else:
-		is_mouse_hovering = true
 	object_hovered = object
 
 
 func unhover():
-	is_mouse_hovering = false
 	object_hovered = null
 
 
 func queue_object():
 	object_queued = object_hovered
+
+
+func clear_queued():
+	object_queued = null
 
 
 func interact():

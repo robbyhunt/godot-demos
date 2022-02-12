@@ -52,7 +52,7 @@ func set_destination(dest):
 	path = []
 	destination = dest
 	init_distance_to_destination = (destination - controller_target.translation).length()
-	path = controller_target.scene_base.get_simple_path(controller_target.translation, destination, true)
+	path = get_parent().get_owner().get_simple_path(controller_target.translation, destination, true)
 	
 	if path.size() > 0 and init_distance_to_destination > 0.1:
 		return true

@@ -6,11 +6,13 @@ export(int) var interact_camera_mount
 onready var interact_spot = get_node("InteractArea/InteractSpot")
 onready var interact_spot_global_pos = interact_spot.to_global(interact_spot.translation)
 
+var look_at_loc
+
 
 func _process(delta):
-	var look_at_loc = InteractionManager.camera_controller.get_node("Tripod/Camera").global_transform.origin
+	look_at_loc = InteractionManager.camera_controller.get_node("Tripod/Camera").global_transform.origin
 	look_at_loc.y = self.global_transform.origin.y
-	self.look_at(look_at_loc, Vector3.UP)
+	$Model.look_at(look_at_loc, Vector3.UP)
 
 
 func interact():
@@ -20,10 +22,10 @@ func interact():
 
 
 func _on_InteractArea_mouse_entered():
-	$Sprite.flip_h = true
+	$Model/Sprite.flip_h = true
 	InteractionManager.hover(self)
 
 
 func _on_InteractArea_mouse_exited():
-	$Sprite.flip_h = false
+	$Model/Sprite.flip_h = false
 	InteractionManager.unhover()

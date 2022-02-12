@@ -1,13 +1,10 @@
 extends Position3D
 
 onready var movement_controller = get_node("MovementController")
-onready var scene_base = get_owner()
-onready var camera_controller = scene_base.get_node("CameraController")
-onready var camera = camera_controller.get_node("Tripod/Camera")
+onready var camera = get_owner().get_node("CameraController").get_node("Tripod/Camera")
 
 var look_at_loc
-
-var interact_on_arrive
+var interact_on_arrive = false
 
 
 func _ready():
@@ -16,18 +13,29 @@ func _ready():
 
 func _process(delta):
 	look_at_loc = camera.global_transform.origin
-	$Sprite.look_at(Vector3(look_at_loc.x, self.global_transform.origin.y, look_at_loc.z), Vector3.UP)
+	$Model.look_at(Vector3(look_at_loc.x, self.global_transform.origin.y, look_at_loc.z), Vector3.UP)
 
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
 		if InteractionManager.object_interacting:
 			InteractionManager.end_interaction()
+		if InteractionManager.object_queued:
+			InteractionManager.clear_queued()
+			
 		
-		if InteractionManager.is_mouse_hovering:
+		if InteractionManager.object_hovered:
 			move_to_position(InteractionManager.object_hovered.interact_spot_global_pos, true)
 		else:
 			move_to_position(get_click_pos(event))
+
+
+func get_click_pos(event):
+	var from = camera.project_ray_origin(event.position)
+	var to = from + camera.project_ray_normal(event.position)*100
+	var space_state = get_world().direct_space_state
+	var result = space_state.intersect_ray(from, to, [self], 1)
+	return result.position
 
 
 func move_to_position(destination, interact = false):
@@ -36,15 +44,6 @@ func move_to_position(destination, interact = false):
 		InteractionManager.queue_object()
 	if movement_controller.set_destination(destination):
 		$AnimationPlayer.play("move", -1, 1.5)
-
-
-func get_click_pos(event):
-	var from = camera.project_ray_origin(event.position)
-	var to = from + camera.project_ray_normal(event.position)*100
-	var space_state = get_world().direct_space_state
-	var result = space_state.intersect_ray(from, to, [self], 1)
-	print(result.position)
-	return result.position
 
 
 func _on_destination_reached():
