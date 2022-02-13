@@ -42,16 +42,15 @@ func interact():
 func start_interaction():
 	match object_queued.interaction_type:
 		INTERACTION_TYPES.DIALOGUE:
-			GameEvents.emit_signal("dialogue_started", object_queued)
-	GameEvents.emit_signal("interaction_started")
+			DialogueManager.start_dialogue(object_queued)
 	object_interacting = object_queued
 	object_queued = null
 
 
 func end_interaction():
-	#match object_interacting.interaction_type:
-	#	INTERACTION_TYPES.DIALOGUE:
-	#		GameEvents.emit_signal("dialogue_ended")
+	match object_interacting.interaction_type:
+		INTERACTION_TYPES.DIALOGUE:
+			DialogueManager.end_dialogue()
 	object_interacting = null
 	GameEvents.emit_signal("interaction_ended")
 

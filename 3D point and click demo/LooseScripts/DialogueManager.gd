@@ -15,8 +15,6 @@ var in_dialogue = false
 
 
 func _ready():
-	GameEvents.connect("dialogue_started", self, "_init_dialogue")
-	GameEvents.connect("interaction_ended", self, "_end_dialogue")
 	voicebox.connect("characters_sounded", self, "_on_voicebox_characters_sounded")
 	voicebox.connect("finished_phrase", self, "_on_voicebox_finished_phrase")
 
@@ -45,7 +43,7 @@ func play_next_in_conversation():
 	voicebox.play_string(next_line[1])
 
 
-func _init_dialogue(dialogue_object):
+func start_dialogue(dialogue_object):
 	_clear()
 	var new_conversation = [] + dialogue_object.conversation
 	speaker = dialogue_object
@@ -54,7 +52,7 @@ func _init_dialogue(dialogue_object):
 	play_next_in_conversation()
 
 
-func _end_dialogue():
+func end_dialogue():
 	if in_dialogue:
 		_clear()
 		in_dialogue = false

@@ -28,6 +28,7 @@ config/icon="res://icon.png"
 
 InteractionManager="*res://Singletons/InteractionManager.tscn"
 GameEvents="*res://Singletons/GameEvents.tscn"
+DialogueManager="*res://LooseScripts/DialogueManager.tscn"
 
 [display]
 

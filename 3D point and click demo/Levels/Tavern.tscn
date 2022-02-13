@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Flagonlord.wav" type="AudioStream" id=1]
 [ext_resource path="res://Levels/meshes/tavern.gltf" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://LooseScripts/CameraController.gd" type="Script" id=4]
 [ext_resource path="res://LooseScripts/CameraTrigger.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Characters/NPCs/NPC.tscn" type="PackedScene" id=6]
-[ext_resource path="res://LooseScripts/DialogueManager.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=80]
 [ext_resource path="res://Environment.tres" type="Environment" id=83]
 
@@ -44,8 +43,6 @@ extents = Vector3( 0.6, 0.1, 1.4 )
 extents = Vector3( 1.2, 0.1, 1.4 )
 
 [node name="Navigation" type="Navigation"]
-
-[node name="DialogueManager" parent="." instance=ExtResource( 7 )]
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.17, 0 )

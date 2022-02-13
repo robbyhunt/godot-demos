@@ -22,7 +22,6 @@ func _input(event):
 			InteractionManager.end_interaction()
 		if InteractionManager.object_queued:
 			InteractionManager.clear_queued()
-			
 		
 		if InteractionManager.object_hovered:
 			move_to_position(InteractionManager.object_hovered.interact_spot_global_pos, true)

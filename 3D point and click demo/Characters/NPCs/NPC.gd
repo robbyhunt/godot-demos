@@ -13,8 +13,6 @@ export(int) var interact_camera_mount
 onready var game_camera = get_owner().get_node("CameraController").get_node("Tripod/Camera")
 onready var interact_spot = get_node("InteractArea/InteractSpot")
 onready var interact_spot_global_pos = interact_spot.to_global(interact_spot.translation)
-onready var dialogue_anchor = get_node("Model/DialogueLabelPos")
-onready var dialogue_anchor_global_pos = dialogue_anchor.to_global(dialogue_anchor.translation)
 
 const conversation = [
 	[1, "My hotels as clean as an elven arse!"],
