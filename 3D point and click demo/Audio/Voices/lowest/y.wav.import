@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/y.wav-6d209666a25ba8e9e391ec362b31d0df.sample"
+
+[deps]
+
+source_file="res://Audio/Voices/lowest/y.wav"
+dest_files=[ "res://.import/y.wav-6d209666a25ba8e9e391ec362b31d0df.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

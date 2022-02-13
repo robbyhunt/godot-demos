@@ -8,9 +8,8 @@ var exit2_active = false
 
 
 func _on_Exit_area_event(area, exit_id, entering):
-	if area.name == "PlayerArea":
-		match exit_id:
-			1:
-				exit1_active = entering
-			2:
-				exit2_active = entering
+	match exit_id:
+		1:
+			exit1_active = entering
+		2:
+			exit2_active = entering

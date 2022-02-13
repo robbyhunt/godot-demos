@@ -1,12 +1,15 @@
 extends Node
 
-var camera_controller
-var return_camera_mount
+enum INTERACTION_TYPES { DIALOGUE }
 
 var object_hovered
 var object_queued
 var object_interacting
 var waiting_for_camera = false
+
+
+func _ready():
+	GameEvents.connect("camera_destination_reached", self, "_on_camera_destination_reached")
 
 
 func hover(object):
@@ -25,28 +28,35 @@ func queue_object():
 
 func clear_queued():
 	object_queued = null
+	GameEvents.emit_signal("interaction_cancelled")
 
 
 func interact():
 	if object_queued:
 		if object_queued.interact_camera_mount:
-			return_camera_mount = camera_controller.cur_mount_id
-			camera_controller.switch_mount(object_queued.interact_camera_mount)
+			GameEvents.emit_signal("interaction_init", object_queued.interact_camera_mount)
 		else:
-			object_queued.interact()
-			object_interacting = object_queued
-			object_queued = null
+			start_interaction()
+
+
+func start_interaction():
+	match object_queued.interaction_type:
+		INTERACTION_TYPES.DIALOGUE:
+			GameEvents.emit_signal("dialogue_started", object_queued)
+	GameEvents.emit_signal("interaction_started")
+	object_interacting = object_queued
+	object_queued = null
 
 
 func end_interaction():
+	#match object_interacting.interaction_type:
+	#	INTERACTION_TYPES.DIALOGUE:
+	#		GameEvents.emit_signal("dialogue_ended")
 	object_interacting = null
-	if return_camera_mount:
-		camera_controller.switch_mount(return_camera_mount)
+	GameEvents.emit_signal("interaction_ended")
 
 
-func _on_camera_destination_reached():
+func _on_camera_destination_reached(camera_mount_id):
 	if object_queued:
-		if camera_controller.cur_mount_id == object_queued.interact_camera_mount:
-			object_queued.interact()
-			object_interacting = object_queued
-			object_queued = null
+		if camera_mount_id == object_queued.interact_camera_mount:
+			start_interaction()

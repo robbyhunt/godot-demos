@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "AudioStreamPlayer",
+"class": "ACVoiceBox",
+"language": "GDScript",
+"path": "res://LooseScripts/ACVoicebox.gd"
+} ]
+_global_script_class_icons={
+"ACVoiceBox": ""
+}
+
 [application]
 
 config/name="Tavern"
@@ -17,6 +27,7 @@ config/icon="res://icon.png"
 [autoload]
 
 InteractionManager="*res://Singletons/InteractionManager.tscn"
+GameEvents="*res://Singletons/GameEvents.tscn"
 
 [display]
 

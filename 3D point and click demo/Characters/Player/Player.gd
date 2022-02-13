@@ -1,7 +1,7 @@
 extends Position3D
 
 onready var movement_controller = get_node("MovementController")
-onready var camera = get_owner().get_node("CameraController").get_node("Tripod/Camera")
+onready var game_camera = get_owner().get_node("CameraController").get_node("Tripod/Camera")
 
 var look_at_loc
 var interact_on_arrive = false
@@ -11,8 +11,8 @@ func _ready():
 	movement_controller.connect("destination_reached", self, "_on_destination_reached")
 
 
-func _process(delta):
-	look_at_loc = camera.global_transform.origin
+func _process(_delta):
+	look_at_loc = game_camera.global_transform.origin
 	$Model.look_at(Vector3(look_at_loc.x, self.global_transform.origin.y, look_at_loc.z), Vector3.UP)
 
 
@@ -31,8 +31,8 @@ func _input(event):
 
 
 func get_click_pos(event):
-	var from = camera.project_ray_origin(event.position)
-	var to = from + camera.project_ray_normal(event.position)*100
+	var from = game_camera.project_ray_origin(event.position)
+	var to = from + game_camera.project_ray_normal(event.position)*100
 	var space_state = get_world().direct_space_state
 	var result = space_state.intersect_ray(from, to, [self], 1)
 	return result.position

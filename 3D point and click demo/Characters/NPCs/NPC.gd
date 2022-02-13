@@ -1,24 +1,33 @@
 extends Position3D
 
+enum INTERACTION_TYPES { DIALOGUE }
+
+export(INTERACTION_TYPES) var interaction_type = INTERACTION_TYPES.DIALOGUE
+
+export(String) var voice = "lowest"
+export(float) var voice_pitch = 6.0
+
 export(bool) var has_interact_spot = false
 export(int) var interact_camera_mount
 
+onready var game_camera = get_owner().get_node("CameraController").get_node("Tripod/Camera")
 onready var interact_spot = get_node("InteractArea/InteractSpot")
 onready var interact_spot_global_pos = interact_spot.to_global(interact_spot.translation)
+onready var dialogue_anchor = get_node("Model/DialogueLabelPos")
+onready var dialogue_anchor_global_pos = dialogue_anchor.to_global(dialogue_anchor.translation)
+
+const conversation = [
+	[1, "My hotels as clean as an elven arse!"],
+	[0, "That doesn't sound very appealing."]
+   ]
 
 var look_at_loc
 
 
-func _process(delta):
-	look_at_loc = InteractionManager.camera_controller.get_node("Tripod/Camera").global_transform.origin
+func _process(_delta):
+	look_at_loc = game_camera.global_transform.origin
 	look_at_loc.y = self.global_transform.origin.y
 	$Model.look_at(look_at_loc, Vector3.UP)
-
-
-func interact():
-	$AnimationPlayer.play("move", -1, 1.5)
-	yield(get_tree().create_timer(1.0), "timeout")
-	$AnimationPlayer.play("idle", .2, 1)
 
 
 func _on_InteractArea_mouse_entered():

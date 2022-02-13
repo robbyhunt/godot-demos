@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/th.wav-7434bc79b93ae0519228c1614208ef1b.sample"
+
+[deps]
+
+source_file="res://Audio/Voices/high/th.wav"
+dest_files=[ "res://.import/th.wav-7434bc79b93ae0519228c1614208ef1b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

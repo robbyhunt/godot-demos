@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/g.wav-33bd720e73e573411391ba3acf1a9256.sample"
+
+[deps]
+
+source_file="res://Audio/Voices/high/g.wav"
+dest_files=[ "res://.import/g.wav-33bd720e73e573411391ba3acf1a9256.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
