@@ -12,10 +12,16 @@ _global_script_classes=[ {
 "base": "AudioStreamPlayer",
 "class": "ACVoiceBox",
 "language": "GDScript",
-"path": "res://LooseScripts/ACVoicebox.gd"
+"path": "res://Dialogue/ACVoicebox.gd"
+}, {
+"base": "Area",
+"class": "InteractArea",
+"language": "GDScript",
+"path": "res://Objects/InteractArea.gd"
 } ]
 _global_script_class_icons={
-"ACVoiceBox": ""
+"ACVoiceBox": "",
+"InteractArea": ""
 }
 
 [application]
@@ -28,7 +34,7 @@ config/icon="res://icon.png"
 
 InteractionManager="*res://Singletons/InteractionManager.tscn"
 GameEvents="*res://Singletons/GameEvents.tscn"
-DialogueManager="*res://LooseScripts/DialogueManager.tscn"
+DialogueManager="*res://Dialogue/DialogueManager.tscn"
 
 [display]
 

@@ -1,10 +1,10 @@
 [gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://Flagonlord.wav" type="AudioStream" id=1]
+[ext_resource path="res://Audio/Flagonlord.wav" type="AudioStream" id=1]
 [ext_resource path="res://Levels/Tavern/meshes/tavern.gltf" type="PackedScene" id=2]
 [ext_resource path="res://Levels/Tavern/meshes/lights.gltf" type="PackedScene" id=3]
-[ext_resource path="res://LooseScripts/CameraController.gd" type="Script" id=4]
-[ext_resource path="res://LooseScripts/CameraTrigger.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/Common/CameraController/CameraController.gd" type="Script" id=4]
+[ext_resource path="res://Levels/Common/CameraController/CameraTrigger.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Characters/NPCs/NPC.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=80]
 [ext_resource path="res://Environment.tres" type="Environment" id=83]
@@ -55,6 +55,10 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.3346
 
 [node name="NPC" parent="Characters" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.674827, 0, -6.15477 )
+interaction_type = 0
+has_interact_spot_override = true
+has_interact_camera_mount = true
+interact_camera_mount = 11
 
 [node name="World" type="Spatial" parent="."]
 

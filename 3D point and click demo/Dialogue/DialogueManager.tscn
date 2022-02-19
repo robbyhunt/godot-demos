@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Dialogue/DialogueManager.gd" type="Script" id=1]
+[ext_resource path="res://Dialogue/ACVoicebox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Dialogue/DialogueLabel.tscn" type="PackedScene" id=3]
+
+[node name="DialogueManager" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ACVoicebox" parent="." instance=ExtResource( 2 )]
+
+[node name="Labels" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerLabel" parent="Labels" instance=ExtResource( 3 )]
+visible = false
+margin_left = 513.0
+margin_top = 379.0
+margin_right = 844.0
+margin_bottom = 513.0
+flip_h = false
+
+[node name="OtherLabel" parent="Labels" instance=ExtResource( 3 )]
+visible = false
+margin_left = 396.0
+margin_top = 32.0
+margin_right = 727.0
+margin_bottom = 166.0
+
+[editable path="Labels/PlayerLabel"]

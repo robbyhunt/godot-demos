@@ -21,28 +21,52 @@ func _input(event):
 		if InteractionManager.object_interacting:
 			InteractionManager.end_interaction()
 		if InteractionManager.object_queued:
+			interact_on_arrive = false
 			InteractionManager.clear_queued()
 		
 		if InteractionManager.object_hovered:
-			move_to_position(InteractionManager.object_hovered.interact_spot_global_pos, true)
+			interact(InteractionManager.object_hovered)
 		else:
-			move_to_position(get_click_pos(event))
+			var click_pos = get_click_pos(event)
+			if click_pos:
+				move_to_position(click_pos)
+			else:
+				print("Invalid move pos")
 
 
-func get_click_pos(event):
+func get_click_pos(event: InputEventMouseButton):
 	var from = game_camera.project_ray_origin(event.position)
 	var to = from + game_camera.project_ray_normal(event.position)*100
 	var space_state = get_world().direct_space_state
 	var result = space_state.intersect_ray(from, to, [self], 1)
-	return result.position
+	
+	if result:
+		return result.position
+	else:
+		return false
 
 
-func move_to_position(destination, interact = false):
-	interact_on_arrive = interact
-	if interact:
-		InteractionManager.queue_object()
-	if movement_controller.set_destination(destination):
+func move_to_position(destination, stop_range: float = 0):
+	if movement_controller.set_destination(destination, stop_range):
 		$AnimationPlayer.play("move", -1, 1.5)
+
+
+func interact(interact_object):
+	var target_pos = interact_object.interact_spot_global_pos
+	var player_pos = get_global_pos()
+	var distance_between = player_pos.distance_to(target_pos)
+	var target_max_range = interact_object.interact_range
+	
+	InteractionManager.queue_object()
+	if distance_between > target_max_range:
+		interact_on_arrive = true
+		move_to_position(target_pos, target_max_range)
+	else:
+		InteractionManager.interact()
+
+
+func get_global_pos():
+	return get_parent().to_global(self.translation)
 
 
 func _on_destination_reached():

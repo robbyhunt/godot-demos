@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Dialogue/dialogue-bubble-2.png" type="Texture" id=1]
+[ext_resource path="res://Fonts/montreal/Montreal.tres" type="DynamicFont" id=2]
+
+[node name="DialogueLabel" type="TextureRect"]
+margin_right = 331.0
+margin_bottom = 134.0
+texture = ExtResource( 1 )
+expand = true
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 20.0
+margin_top = 28.0
+margin_right = 313.0
+margin_bottom = 79.0
+rect_rotation = -0.842875
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Example text..."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

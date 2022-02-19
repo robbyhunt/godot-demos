@@ -1,24 +1,34 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://LooseScripts/CameraTrigger.tscn" type="PackedScene" id=2]
-[ext_resource path="res://LooseScripts/CameraController.gd" type="Script" id=3]
-[ext_resource path="res://Characters/NPCs/NPC.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/Common/CameraController/CameraTrigger.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/Common/CameraController/CameraController.gd" type="Script" id=3]
+[ext_resource path="res://Objects/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Characters/NPCs/NPC.tscn" type="PackedScene" id=5]
 
 [sub_resource type="NavigationMesh" id=1]
 vertices = PoolVector3Array( 4.76837e-07, 0.3, -6.9, -6.9, 0.3, 4.76837e-07, -6.9, 0.3, 6.9, 4.76837e-07, 0.3, 6.9, 6.9, 0.3, 4.76837e-07, 6.9, 0.3, -6.9, 4.76837e-07, 0.3, 6.9, 6.9, 0.3, 6.9, 6.9, 0.3, 4.76837e-07, 4.76837e-07, 0.3, -6.9, -6.9, 0.3, -6.9, -6.9, 0.3, 4.76837e-07 )
 polygons = [ PoolIntArray( 5, 4, 0 ), PoolIntArray( 0, 4, 3 ), PoolIntArray( 0, 3, 1 ), PoolIntArray( 1, 3, 2 ), PoolIntArray( 8, 7, 6 ), PoolIntArray( 11, 10, 9 ) ]
 
 [sub_resource type="SpatialMaterial" id=2]
-params_diffuse_mode = 4
-albedo_color = Color( 0.466667, 0.254902, 0.172549, 1 )
-roughness = 0.0
+albedo_color = Color( 0.509804, 0.247059, 0.137255, 1 )
+roughness = 0.85
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 1.5, 2.2, 0.1 )
+
+[sub_resource type="ConcavePolygonShape" id=4]
+data = PoolVector3Array( -0.75, 1.1, 0.05, 0.75, 1.1, 0.05, -0.75, -1.1, 0.05, 0.75, 1.1, 0.05, 0.75, -1.1, 0.05, -0.75, -1.1, 0.05, 0.75, 1.1, -0.05, -0.75, 1.1, -0.05, 0.75, -1.1, -0.05, -0.75, 1.1, -0.05, -0.75, -1.1, -0.05, 0.75, -1.1, -0.05, 0.75, 1.1, 0.05, 0.75, 1.1, -0.05, 0.75, -1.1, 0.05, 0.75, 1.1, -0.05, 0.75, -1.1, -0.05, 0.75, -1.1, 0.05, -0.75, 1.1, -0.05, -0.75, 1.1, 0.05, -0.75, -1.1, -0.05, -0.75, 1.1, 0.05, -0.75, -1.1, 0.05, -0.75, -1.1, -0.05, 0.75, 1.1, 0.05, -0.75, 1.1, 0.05, 0.75, 1.1, -0.05, -0.75, 1.1, 0.05, -0.75, 1.1, -0.05, 0.75, 1.1, -0.05, -0.75, -1.1, 0.05, 0.75, -1.1, 0.05, -0.75, -1.1, -0.05, 0.75, -1.1, 0.05, 0.75, -1.1, -0.05, -0.75, -1.1, -0.05 )
 
 [node name="TestRoom" type="Navigation"]
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.291142, 0 )
 navmesh = SubResource( 1 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.591408, -0.422636, 0.686743, 0, 0.851645, 0.52412, -0.806372, -0.309969, 0.50367, 6.46124, 3.89997, 0.00127649 )
+shadow_enabled = true
 
 [node name="World" type="Spatial" parent="."]
 
@@ -30,23 +40,48 @@ height = 0.5
 depth = 15.0
 material = SubResource( 2 )
 
+[node name="Door" parent="World" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.88349, 0, -4.90958 )
+
+[node name="Hinge" parent="World/Door" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0 )
+
+[node name="DoorArea" parent="World/Door/Hinge" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0 )
+interact_range = 1.5
+
+[node name="MeshInstance" type="MeshInstance" parent="World/Door/Hinge/DoorArea" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="World/Door/Hinge/DoorArea" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0 )
+shape = SubResource( 4 )
+
 [node name="Characters" type="Spatial" parent="."]
 
 [node name="Player" parent="Characters" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.23454, 0, -1.86521 )
 
-[node name="NPC" parent="Characters" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82678, 0, -4.26949 )
+[node name="NPC" parent="Characters" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76596, 0, -4.32627 )
+interaction_type = 0
+has_interact_spot_override = true
+has_interact_camera_mount = true
+interact_camera_mount = 1
 
 [node name="CameraController" type="Spatial" parent="."]
 script = ExtResource( 3 )
 
 [node name="Tripod" type="Spatial" parent="CameraController"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0 )
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="Camera" type="Camera" parent="CameraController/Tripod"]
+transform = Transform( 1, 7.45058e-09, -2.98023e-08, 1.49012e-08, 1, -2.98023e-08, 2.98023e-08, 1.49012e-07, 1, -0.197018, -0.0251203, 0.0374451 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -55,8 +90,20 @@ __meta__ = {
 
 [node name="CameraMounts" type="Spatial" parent="CameraController"]
 
+[node name="Mount0" type="Position3D" parent="CameraController/CameraMounts"]
+transform = Transform( 0.974796, 0.124289, -0.185269, -0.0455843, 0.923882, 0.379951, 0.21839, -0.361929, 0.906263, 0.077498, 3.75113, 1.94987 )
+__meta__ = {
+"_editor_description_": ""
+}
+
 [node name="Mount1" type="Position3D" parent="CameraController/CameraMounts"]
-transform = Transform( 0.974796, 0.124289, -0.185269, 0, 0.83044, 0.557108, 0.223097, -0.543066, 0.80951, -0.668327, 2.66447, 2.31694 )
+transform = Transform( 0.641182, -0.302454, 0.705271, 0, 0.919052, 0.394135, -0.767389, -0.252712, 0.58928, 4.36656, 2.14207, -1.62106 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Mount2" type="Position3D" parent="CameraController/CameraMounts"]
+transform = Transform( -0.864035, -0.227355, 0.44917, -0.0455843, 0.923882, 0.379951, -0.501364, 0.307815, -0.80863, 2.46249, 3.75113, -3.16161 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -64,7 +111,8 @@ __meta__ = {
 [node name="CameraTriggers" type="Spatial" parent="CameraController"]
 
 [node name="CameraTrigger" parent="CameraController/CameraTriggers" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6812, 0.2, 0.0283894 )
+transform = Transform( -0.452139, 0, -0.891948, 0, 1, 0, 0.891948, 0, -0.452139, 0.581534, 0.2, -0.512532 )
+mount_id2 = 2
 
 [node name="Exit1" parent="CameraController/CameraTriggers/CameraTrigger" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0939202, 0, 0 )
@@ -72,14 +120,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0939202, 0, 0 )
 [node name="CollisionShape" parent="CameraController/CameraTriggers/CameraTrigger/Exit1" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.735724, 0, 0 )
 
+[node name="CollisionShape" parent="CameraController/CameraTriggers/CameraTrigger/Listener" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
 [node name="Exit2" parent="CameraController/CameraTriggers/CameraTrigger" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0767374, 0, 0 )
 
 [node name="CollisionShape" parent="CameraController/CameraTriggers/CameraTrigger/Exit2" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.720429, 0, 0 )
 
-[node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.591408, -0.422636, 0.686743, 0, 0.851645, 0.52412, -0.806372, -0.309969, 0.50367, 6.45518, 3.90559, 0 )
-shadow_enabled = true
-
+[editable path="World/Door"]
 [editable path="CameraController/CameraTriggers/CameraTrigger"]
