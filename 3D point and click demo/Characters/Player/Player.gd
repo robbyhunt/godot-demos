@@ -2,6 +2,7 @@ extends Position3D
 
 onready var movement_controller = get_node("MovementController")
 onready var game_camera = get_owner().get_node("CameraController").get_node("Tripod/Camera")
+onready var dialogue_pos = get_node("DialogueSpot")
 
 var look_at_loc
 var interact_on_arrive = false
@@ -9,6 +10,8 @@ var interact_on_arrive = false
 
 func _ready():
 	movement_controller.connect("destination_reached", self, "_on_destination_reached")
+	
+	InteractionManager.player_ref = self
 
 
 func _process(_delta):
@@ -53,7 +56,7 @@ func move_to_position(destination, stop_range: float = 0):
 
 func interact(interact_object):
 	var target_pos = interact_object.interact_spot_global_pos
-	var player_pos = get_global_pos()
+	var player_pos = self.global_transform.origin
 	var distance_between = player_pos.distance_to(target_pos)
 	var target_max_range = interact_object.interact_range
 	
@@ -63,10 +66,6 @@ func interact(interact_object):
 		move_to_position(target_pos, target_max_range)
 	else:
 		InteractionManager.interact()
-
-
-func get_global_pos():
-	return get_parent().to_global(self.translation)
 
 
 func _on_destination_reached():

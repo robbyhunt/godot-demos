@@ -6,15 +6,19 @@ export(InteractionManager.INTERACTION_TYPES) var interaction_type = InteractionM
 export(float, 10.0) var interact_range = 0
 export(bool) var has_interact_spot_override = false
 export(bool) var has_interact_camera_mount = false
+export(bool) var has_dialogue_spot = false
 export(int) var interact_camera_mount
 
 
-onready var interact_spot_global_pos = get_parent().to_global(self.translation)
+onready var interact_spot_global_pos = self.global_transform.origin
+onready var dialogue_pos = self
 
 
 func _ready():
 	if has_interact_spot_override:
-		interact_spot_global_pos = to_global(get_node("InteractSpot").translation)
+		interact_spot_global_pos = get_node("InteractSpot").global_transform.origin
+	if has_dialogue_spot:
+		dialogue_pos = get_node("DialogueSpot")
 
 
 func _on_Area_mouse_entered():

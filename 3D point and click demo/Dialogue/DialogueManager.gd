@@ -19,6 +19,12 @@ func _ready():
 	voicebox.connect("finished_phrase", self, "_on_voicebox_finished_phrase")
 
 
+func _process(_delta):
+	if speaker:
+		$Labels/OtherLabel.set_position(get_viewport().get_camera().unproject_position(speaker.dialogue_pos.global_transform.origin) - $Labels/OtherLabel.rect_size)
+		$Labels/PlayerLabel.set_position(get_viewport().get_camera().unproject_position(InteractionManager.player_ref.dialogue_pos.global_transform.origin) - Vector2(0, $Labels/OtherLabel.rect_size.y))
+
+
 func _on_voicebox_characters_sounded(characters: String):
 	current_label.text += characters
 
@@ -45,7 +51,14 @@ func play_next_in_conversation():
 
 func start_dialogue(dialogue_object):
 	_clear()
-	var new_conversation = [] + dialogue_object.conversation
+	var new_conversation
+	match dialogue_object.name:
+		"NPC":
+			new_conversation = [] + dialogue_object.conversation
+		"NPC2":
+			new_conversation = [] + dialogue_object.conversation2
+		"NPC3":
+			new_conversation = [] + dialogue_object.conversation3
 	speaker = dialogue_object
 	conversation = new_conversation
 	in_dialogue = true

@@ -8,6 +8,9 @@ var object_interacting
 var waiting_for_camera = false
 
 
+var player_ref
+
+
 func _ready():
 	GameEvents.connect("camera_destination_reached", self, "_on_camera_destination_reached")
 

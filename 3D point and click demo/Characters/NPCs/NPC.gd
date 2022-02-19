@@ -11,11 +11,16 @@ const conversation = [
 	[0, "That doesn't sound very appealing."]
    ]
 
+const conversation2 = [
+	[1, "My hotels as clean as an elven arse!"],
+	[0, "That doesn't sound very appealing."]
+   ]
+
+const conversation3 = [
+	[1, "Don't say anything back to me."]
+   ]
+
 var look_at_loc
-
-
-func get_global_pos():
-	return get_parent().to_global(self.translation)
 
 
 func _process(_delta):

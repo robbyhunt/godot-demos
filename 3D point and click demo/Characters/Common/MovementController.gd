@@ -22,9 +22,9 @@ func _physics_process(delta):
 		
 		accelerate(delta)
 		
-		direction = step_destination - controller_target.get_global_pos()
+		direction = step_destination - controller_target.global_transform.origin
 		
-		distance_to_destination = destination.distance_to(controller_target.get_global_pos())
+		distance_to_destination = destination.distance_to(controller_target.global_transform.origin)
 		
 		if distance_to_destination <= stop_range:
 			arrive()
@@ -66,8 +66,8 @@ func set_destination(dest, _stop_range):
 	path = []
 	destination = dest
 	stop_range = _stop_range
-	distance_to_destination = destination.distance_to(controller_target.get_global_pos())
-	path = get_parent().get_owner().get_simple_path(controller_target.get_global_pos(), destination, true)
+	distance_to_destination = destination.distance_to(controller_target.global_transform.origin)
+	path = get_parent().get_owner().get_simple_path(controller_target.global_transform.origin, destination, true)
 	
 	if path.size() > 0 and distance_to_destination > stop_range:
 		return true

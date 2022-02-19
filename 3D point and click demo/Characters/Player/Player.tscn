@@ -71,6 +71,9 @@ script = ExtResource( 3 )
 transform = Transform( 1, -7.45058e-09, 0, 7.45058e-09, 1, 0, 0, 0, 1, 3.72529e-09, 0, 0 )
 ControllerTarget = NodePath("..")
 
+[node name="DialogueSpot" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.927511, 0 )
+
 [node name="Model" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0 )
 mesh = SubResource( 9 )

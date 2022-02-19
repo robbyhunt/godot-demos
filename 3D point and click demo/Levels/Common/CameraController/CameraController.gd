@@ -61,5 +61,6 @@ func _on_interaction_init(mount_id):
 
 
 func _on_interaction_ended():
-	switch_mount(return_mount_id)
-	return_mount_id = null
+	if return_mount_id != null:
+		switch_mount(return_mount_id)
+		return_mount_id = null

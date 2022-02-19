@@ -63,6 +63,9 @@ shape = SubResource( 4 )
 [node name="InteractSpot" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.14992 )
 
+[node name="DialogueSpot" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.15263, 0 )
+
 [node name="Model" type="MeshInstance" parent="."]
 
 [node name="Sprite" type="Sprite3D" parent="Model"]

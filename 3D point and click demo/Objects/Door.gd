@@ -25,13 +25,13 @@ func interact():
 	return true
 
 
+func _on_AnimationPlayer_animation_finished(_anim_name):
+	is_animating = false
+
+
 func _on_Door_mouse_entered():
 	_on_Area_mouse_entered()
 
 
 func _on_Door_mouse_exited():
 	_on_Area_mouse_exited()
-
-
-func _on_AnimationPlayer_animation_finished(_anim_name):
-	is_animating = false
