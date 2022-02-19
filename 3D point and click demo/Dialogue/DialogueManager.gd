@@ -15,7 +15,9 @@ var in_dialogue = false
 
 
 func _ready():
+# warning-ignore:return_value_discarded
 	voicebox.connect("characters_sounded", self, "_on_voicebox_characters_sounded")
+# warning-ignore:return_value_discarded
 	voicebox.connect("finished_phrase", self, "_on_voicebox_finished_phrase")
 
 

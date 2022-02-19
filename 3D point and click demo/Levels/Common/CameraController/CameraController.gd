@@ -37,14 +37,14 @@ func move_camera():
 	tripod_tween.start()
 
 
-func _on_trigger_entered(area, trigger):
+func _on_trigger_entered(_area, trigger):
 	if cur_mount_id == trigger.mount_id1:
 		switch_mount(trigger.mount_id2)
 	elif cur_mount_id == trigger.mount_id2:
 		switch_mount(trigger.mount_id1)
 
 
-func _on_trigger_exited(area, trigger):
+func _on_trigger_exited(_area, trigger):
 	if trigger.exit1_active and cur_mount_id != trigger.mount_id1:
 		switch_mount(trigger.mount_id1)
 	elif trigger.exit2_active and cur_mount_id != trigger.mount_id2:
