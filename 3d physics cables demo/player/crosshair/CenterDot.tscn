@@ -1,0 +1,43 @@
+[gd_scene format=2]
+
+[node name="CenterDot" type="Position2D"]
+
+[node name="Inline" type="ColorRect" parent="."]
+margin_left = -5.0
+margin_top = -5.0
+margin_right = 5.0
+margin_bottom = -3.0
+color = Color( 0.145098, 0.137255, 0.137255, 0.741176 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Inline2" type="ColorRect" parent="."]
+margin_left = -5.0
+margin_top = 3.0
+margin_right = 5.0
+margin_bottom = 5.0
+color = Color( 0.145098, 0.137255, 0.137255, 0.741176 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Inline3" type="ColorRect" parent="."]
+margin_left = -5.0
+margin_top = -3.0
+margin_right = -3.0
+margin_bottom = 3.0
+color = Color( 0.145098, 0.137255, 0.137255, 0.741176 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Inline4" type="ColorRect" parent="."]
+margin_left = 3.0
+margin_top = -3.0
+margin_right = 5.0
+margin_bottom = 3.0
+color = Color( 0.145098, 0.137255, 0.137255, 0.741176 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

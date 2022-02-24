@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://player/crosshair/CenterDot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/crosshair/Crosshair.gd" type="Script" id=3]
+
+[node name="Crosshair" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="CenterDot" parent="." instance=ExtResource( 2 )]

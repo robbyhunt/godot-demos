@@ -138,9 +138,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0939202, 0, 0 )
 [node name="CollisionShape" parent="CameraController/CameraTriggers/CameraTrigger/Exit1" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.735724, 0, 0 )
 
-[node name="CollisionShape" parent="CameraController/CameraTriggers/CameraTrigger/Listener" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-
 [node name="Exit2" parent="CameraController/CameraTriggers/CameraTrigger" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0767374, 0, 0 )
 

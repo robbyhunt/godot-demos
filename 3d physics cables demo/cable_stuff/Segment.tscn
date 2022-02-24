@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 0.2, 0.2, 0.2, 1 )
+
+[sub_resource type="CubeMesh" id=6]
+material = SubResource( 8 )
+size = Vector3( 0.01, 0.1, 0.01 )
+
+[sub_resource type="ConvexPolygonShape" id=7]
+points = PoolVector3Array( 0.005, 0.0478478, 0.005, -0.005, -0.0478571, -0.005, 0.005, -0.0478571, -0.005, -0.005, 0.0478571, -0.005, -0.005, -0.0478571, 0.005, -0.005, 0.0478571, 0.005, 0.005, 0.0478478, -0.005, 0.005, -0.0478571, 0.005 )
+
+[node name="Segment" type="RigidBody"]
+collision_layer = 2
+mass = 0.0255102
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1.94707e-07, 1, 0, -1, 1.94707e-07, 0, 0, 0, 1, 2.38419e-07, 0, 0 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1.94707e-07, 1, 0, -1, 1.94707e-07, 0, 0, 0, 1, 2.38419e-07, 0, 0 )
+shape = SubResource( 7 )
+
+[node name="PinJoint" type="PinJoint" parent="."]
+transform = Transform( 1, -2.98023e-07, 0, 2.98023e-07, 1, 0, 0, 0, 1, -0.05, -1.11759e-08, 0 )
+nodes/node_b = NodePath("..")
+params/bias = 0.99
+params/damping = 1.5

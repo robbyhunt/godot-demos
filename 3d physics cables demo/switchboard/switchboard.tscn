@@ -1,0 +1,335 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://switchboard/switchboard.gd" type="Script" id=1]
+[ext_resource path="res://switchboard/socket.tscn" type="PackedScene" id=2]
+[ext_resource path="res://switchboard/socket.gd" type="Script" id=3]
+
+[sub_resource type="CubeMesh" id=13]
+size = Vector3( 1.5, 0.86, 0.1 )
+
+[sub_resource type="ConcavePolygonShape" id=14]
+data = PoolVector3Array( -0.75, 0.43, 0.05, 0.75, 0.43, 0.05, -0.75, -0.43, 0.05, 0.75, 0.43, 0.05, 0.75, -0.43, 0.05, -0.75, -0.43, 0.05, 0.75, 0.43, -0.05, -0.75, 0.43, -0.05, 0.75, -0.43, -0.05, -0.75, 0.43, -0.05, -0.75, -0.43, -0.05, 0.75, -0.43, -0.05, 0.75, 0.43, 0.05, 0.75, 0.43, -0.05, 0.75, -0.43, 0.05, 0.75, 0.43, -0.05, 0.75, -0.43, -0.05, 0.75, -0.43, 0.05, -0.75, 0.43, -0.05, -0.75, 0.43, 0.05, -0.75, -0.43, -0.05, -0.75, 0.43, 0.05, -0.75, -0.43, 0.05, -0.75, -0.43, -0.05, 0.75, 0.43, 0.05, -0.75, 0.43, 0.05, 0.75, 0.43, -0.05, -0.75, 0.43, 0.05, -0.75, 0.43, -0.05, 0.75, 0.43, -0.05, -0.75, -0.43, 0.05, 0.75, -0.43, 0.05, -0.75, -0.43, -0.05, 0.75, -0.43, 0.05, 0.75, -0.43, -0.05, -0.75, -0.43, -0.05 )
+
+[node name="Switchboard" type="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13839, 1.48179, -1.92598 )
+mesh = SubResource( 13 )
+material/0 = null
+script = ExtResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 14 )
+
+[node name="Sockets" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0484184 )
+
+[node name="Socket1" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.3, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket2" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.15, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket3" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket4" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -0.15, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket5" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -0.3, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket6" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0.3, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket7" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0.15, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket8" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket9" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, -0.15, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket10" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, -0.3, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket11" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.3, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket12" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.15, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket13" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket14" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.15, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket15" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.3, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket16" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0.3, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket17" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0.15, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket18" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket19" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, -0.15, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket20" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, -0.3, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket21" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket22" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket23" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket24" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket25" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket26" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0.3, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket27" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0.15, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket28" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket29" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.15, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket30" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.3, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket31" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.3, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket32" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.15, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket33" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket34" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.15, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket35" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.3, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket36" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0.3, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket37" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0.15, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket38" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket39" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, -0.15, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket40" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, -0.3, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket41" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.3, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket42" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.15, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket43" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket44" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -0.15, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Socket45" type="Area" parent="Sockets" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -0.3, 0 )
+collision_mask = 0
+monitoring = false
+script = ExtResource( 3 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = 36.0
+margin_top = 49.0
+margin_right = 176.0
+margin_bottom = 265.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -162.0
+margin_top = 20.0
+margin_right = -22.0
+margin_bottom = 236.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -322.0
+margin_top = 20.0
+margin_right = -182.0
+margin_bottom = 236.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

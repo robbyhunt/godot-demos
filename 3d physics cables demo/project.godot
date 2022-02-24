@@ -1,0 +1,73 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Spatial",
+"class": "Cable",
+"language": "GDScript",
+"path": "res://cable_stuff/Cable.gd"
+}, {
+"base": "RigidBody",
+"class": "CableJack",
+"language": "GDScript",
+"path": "res://cable_stuff/cable_jack.gd"
+}, {
+"base": "Area",
+"class": "SwitchboardSocket",
+"language": "GDScript",
+"path": "res://switchboard/socket.gd"
+} ]
+_global_script_class_icons={
+"Cable": "",
+"CableJack": "",
+"SwitchboardSocket": ""
+}
+
+[application]
+
+config/name="3d Physics Cables Demo"
+run/main_scene="res://TestScene.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+Pause="*res://singletons/Pause.gd"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
+[input]
+
+interact={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":2,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+throw={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":7,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+3d_physics/layer_1="World"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
