@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/soft_thump1.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Dice/Normal.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Dice/Die.gd" type="Script" id=3]
+[ext_resource path="res://assets/die6.obj" type="ArrayMesh" id=4]
+
+[sub_resource type="PhysicsMaterial" id=1]
+bounce = 0.5
+
+[sub_resource type="ConvexPolygonShape" id=2]
+points = PoolVector3Array( -0.984166, 0.175618, -0.891921, 0.983619, 1.80486, 0.89138, 0.983998, 0.237247, 0.891723, -0.954553, 0.17456, 0.954601, -0.861495, 1.9594, -0.953883, 0.921567, 0.0843247, -0.952361, -0.953239, 1.92798, 0.922462, 0.92278, 1.95913, -0.922778, 0.830743, 0.0519606, 0.953932, -0.86249, 0.0200307, -0.862535, 0.860107, 1.9578, 0.952291, -0.861812, 0.0208047, 0.861858, 0.985214, 0.143919, -0.861965, -0.984143, 1.89742, -0.830243, -0.829789, 0.114427, -0.983706, 0.862369, 1.86789, -0.98567, -0.891705, 1.98973, 0.830105, 0.862051, 0.0205884, -0.862048, -0.829903, 1.8971, 0.983842, 0.891537, 0.237244, 0.984001, 0.862454, 1.99147, -0.86245, -0.984786, 0.14425, 0.861634, 0.983851, 1.83567, -0.891591, 0.891494, 0.0219426, 0.768593, -0.891886, 1.8358, -0.984228, -0.861678, 0.144159, 0.984938, 0.891584, 1.98976, 0.799495, 0.86196, 1.86748, 0.985203, -0.985572, 1.86784, 0.862321, -0.891799, 1.98984, -0.830193, 0.861703, 0.144184, -0.98491, -0.952453, 0.0533911, -0.860293, 0.984076, 1.89751, 0.799321, 0.95375, 0.0521446, 0.830578, 0.831456, 0.0511416, -0.954751, 0.953785, 0.0521088, -0.830609, -0.954255, 0.0515901, 0.831061, -0.953574, 1.86683, -0.953622, -0.891786, 0.1757, -0.984118, 0.953969, 1.83629, 0.953967, -0.830717, 0.0519332, 0.953959, -0.829842, 1.98947, 0.891518, 0.95279, 1.9583, -0.860552, 0.952783, 1.86607, -0.952781, -0.985526, 0.143602, -0.862282, -0.952952, 1.95851, 0.860744, -0.89134, 1.83529, 0.983626, -0.860322, 0.0533078, -0.952585, 0.768702, 0.021811, 0.891803, 0.952107, 0.145948, -0.952106, 0.768611, 0.114189, 0.983968, 0.953931, 0.175144, 0.95393, 0.983834, 0.114312, 0.768499, 0.985265, 1.86772, 0.861817, 0.861816, 1.99074, 0.861813, 0.861152, 1.95896, -0.953448, 0.95214, 1.95765, 0.859965, -0.953582, 1.95914, -0.861312, -0.95292, 0.14517, -0.952968, -0.830435, 1.99018, -0.892154, -0.86046, 1.95825, 0.952738, -0.830401, 1.89764, -0.984433, -0.952605, 1.86595, 0.952653, -0.984276, 1.83588, -0.89202 )
+
+[node name="Die6" type="RigidBody"]
+mass = 1.53061
+physics_material_override = SubResource( 1 )
+gravity_scale = 2.0
+contacts_reported = 2
+contact_monitor = true
+script = ExtResource( 3 )
+max_ang = 5
+max_vel = 2
+
+[node name="die6" type="MeshInstance" parent="."]
+transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, -0.154663, 0 )
+mesh = ExtResource( 4 )
+material/0 = null
+material/1 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, -0.154663, 0 )
+shape = SubResource( 2 )
+
+[node name="Normals" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.256387, 0 )
+visible = false
+
+[node name="Normal1" parent="Normals" instance=ExtResource( 2 )]
+transform = Transform( 1.94707e-07, 1, 0, -1, 1.94707e-07, 0, 0, 0, 1, 0, 0.247124, 0 )
+face = 1
+
+[node name="Normal2" parent="Normals" instance=ExtResource( 2 )]
+transform = Transform( -0.383022, 0.0145845, 0.923623, -0.00581339, 0.999817, -0.0181984, -0.92372, -0.0123396, -0.382868, 0, 0.247589, 0 )
+face = 2
+
+[node name="Normal3" parent="Normals" instance=ExtResource( 2 )]
+transform = Transform( -4.28408e-08, -1.49012e-08, 1, 1, -1.49012e-08, 3.46237e-08, -1.78814e-07, 1, -9.27739e-09, 0, 0.248651, 0 )
+face = 3
+
+[node name="Normal4" parent="Normals" instance=ExtResource( 2 )]
+transform = Transform( -0.990173, -0.016125, -0.138913, 0.13872, 0.0125278, -0.990252, 0.0177075, -0.999792, -0.0101671, 0, 0.247481, 0 )
+face = 4
+
+[node name="Normal5" parent="Normals" instance=ExtResource( 2 )]
+transform = Transform( 1, -2.98023e-08, -3.94703e-08, 0, -1, -2.41978e-07, -3.72529e-08, 2.23517e-07, -1, 0, 0.237153, 0 )
+face = 5
+
+[node name="Normal6" parent="Normals" instance=ExtResource( 2 )]
+transform = Transform( -0.00470513, -0.999844, -0.0170089, -0.0109424, 0.0170595, -0.999795, 0.999929, -0.00451792, -0.0110209, 0, 0.23459, 0 )
+face = 6
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[connection signal="sleeping_state_changed" from="." to="." method="_on_die_sleeping_state_changed"]
